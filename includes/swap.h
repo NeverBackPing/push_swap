@@ -13,6 +13,10 @@
 #ifndef SWAP_H
 # define SWAP_H
 
+# include <stdio.h>
+# include "libft.h"
+# include "ft_printf.h"
+
 typedef struct data
 {
 	int					content;
