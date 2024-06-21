@@ -13,15 +13,15 @@ LIBFT = libft.a
 
 LIBFT_DIR = libft
 
-LIBC = libft/ft_isalpha.c libft/ft_isdigit.c libft/ft_isalnum.c libft/ft_isascii.c libft/ft_isprint.c libft/ft_strlen.c\
-	libft/ft_memset.c libft/ft_bzero.c libft/ft_memcpy.c libft/ft_memmove.c libft/ft_strlcat.c libft/ft_strlcpy.c\
-	libft/ft_strchr.c libft/ft_strrchr.c libft/ft_strncmp.c libft/ft_memchr.c libft/ft_strnstr.c libft/ft_toupper.c\
-	libft/ft_memcmp.c libft/ft_tolower.c libft/ft_atoi.c libft/ft_calloc.c libft/ft_strdup.c\
-	libft/ft_substr.c libft/ft_strjoin.c libft/ft_strtrim.c libft/ft_itoa.c libft/ft_strmapi.c libft/ft_striteri.c\
-	libft/ft_putchar_fd.c libft/ft_putstr_fd.c libft/ft_putendl_fd.c libft/ft_putnbr_fd.c libft/ft_split.c\
-	libft/ft_lstnew_bonus.c libft/ft_lstadd_front_bonus.c libft/ft_lstsize_bonus.c libft/ft_lstlast_bonus.c\
-	libft/ft_lstadd_back_bonus.c libft/ft_lstdelone_bonus.c libft/ft_lstclear_bonus.c\
-	libft/ft_lstiter_bonus.c libft/ft_lstmap_bonus.c
+LIBC = libcft/ft_isalpha.c libcft/ft_isdigit.c libcft/ft_isalnum.c libcft/ft_isascii.c libcft/ft_isprint.c libcft/ft_strlen.c\
+	libcft/ft_memset.c libcft/ft_bzero.c libcft/ft_memcpy.c libcft/ft_memmove.c libcft/ft_strlcat.c libcft/ft_strlcpy.c\
+	libcft/ft_strchr.c libcft/ft_strrchr.c libcft/ft_strncmp.c libcft/ft_memchr.c libcft/ft_strnstr.c libcft/ft_toupper.c\
+	libcft/ft_memcmp.c libcft/ft_tolower.c libcft/ft_atoi.c libcft/ft_calloc.c libcft/ft_strdup.c\
+	libcft/ft_substr.c libcft/ft_strjoin.c libcft/ft_strtrim.c libcft/ft_itoa.c libcft/ft_strmapi.c libcft/ft_striteri.c\
+	libcft/ft_putchar_fd.c libcft/ft_putstr_fd.c libcft/ft_putendl_fd.c libcft/ft_putnbr_fd.c libcft/ft_split.c\
+	libcft/ft_lstnew_bonus.c libcft/ft_lstadd_front_bonus.c libcft/ft_lstsize_bonus.c libcft/ft_lstlast_bonus.c\
+	libcft/ft_lstadd_back_bonus.c libcft/ft_lstdelone_bonus.c libcft/ft_lstclear_bonus.c\
+	libcft/ft_lstiter_bonus.c libcft/ft_lstmap_bonus.c
 
 LIBFT_OBJS = $(LIBC:.c=.o)
 
