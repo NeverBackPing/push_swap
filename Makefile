@@ -39,7 +39,7 @@ PRINTF_OBJS = $(PRINTF_SRC:.c=.o)
 
 #########################################################
 
-SRC = srcs/swap.c
+SRC = srcs/data_link.c srcs/swap.c
 
 SRCS = ${SRC} ${LIBC} ${PRINTF_SRC}
 

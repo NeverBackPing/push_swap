@@ -17,11 +17,15 @@
 # include "libft.h"
 # include "ft_printf.h"
 
-typedef struct data
+typedef struct data_struct
 {
 	int					content;
-
-	struct data		*next;
-
-} t_data;
+	struct data_struct	*next;
+}	data_s;
+//Data structure
+data_s	*mew_data(int content);
+void	add_data(data_s **lst, data_s *new);
+void	data_clear(data_s **lst);
+void	data_delone(data_s *lst);
+void	merge(data_s *stack_a, data_s *stack_b);
 #endif
