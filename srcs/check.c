@@ -23,7 +23,7 @@ int	check_overflow(char *data)
 	long	num;
 
 	num = ft_atoi(data);
-	if (num > 2147483647 && num < -2147483647)
+	if (num > 2147483647 || num < -2147483647)
 		return (1);
 	return (0);
 }

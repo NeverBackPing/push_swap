@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sjossain <sjossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 16:29:27 by sjossain          #+#    #+#             */
-/*   Updated: 2024/06/24 12:21:20 by sjossain         ###   ########.fr       */
+/*   Created: 2024/06/24 12:21:10 by sjossain          #+#    #+#             */
+/*   Updated: 2024/06/24 12:33:21 by sjossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int	ft_atoi(const char *str)
+long	ft_atol(const char *str)
 {
-	int	number;
-	int	i;
-	int	sign;
+	long	number;
+	int		i;
+	int		sign;
 
 	i = 0;
 	number = 0;
@@ -36,11 +36,11 @@ int	ft_atoi(const char *str)
 		number = number * 10 + (str[i] - '0');
 		i++;
 	}
-	return (number * sign);
+	return (number * sign);;
 }
-/*int	main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	(void) argc;
-	printf("%d\n", ft_atoi(argv[1]));
-	printf("%d\n",atoi(argv[1]));
-}*/
+	printf("%ld\n", ft_atol(argv[1]));
+	printf("%ld\n",atol(argv[1]));
+}

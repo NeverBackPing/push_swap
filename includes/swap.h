@@ -14,6 +14,7 @@
 # define SWAP_H
 
 # include <stdio.h>
+# include <limits.h>
 # include "libft.h"
 # include "ft_printf.h"
 
