@@ -15,11 +15,13 @@
 int	init_stack(char **str, data_s **stack_a)
 {
 	data_s	*data_a;
+	char	**str2;
 	int		i;
 	int		data;
 
 	i = 1;
 	data = 0;
+	str = NULL;
 	while (str[i] != NULL)
 	{
 		if (check_init(str[i]))
@@ -27,7 +29,7 @@ int	init_stack(char **str, data_s **stack_a)
 			error_init(stack_a);
 			return (1);
 		}
-		data = ft_atoi(str[i]);
+		data = ft_atol(str[i]);
 		data_a = mew_data(data);
 		add_data(stack_a, data_a);
 		i++;

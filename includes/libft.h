@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
+# include "../includes/swap.h"
 
 //LIBC and LIBBSD
 void	*ft_memchr(const void *s, int c, size_t n);
@@ -31,6 +32,8 @@ void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
+int		isspace(char *str);
+int		ft_signe(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);

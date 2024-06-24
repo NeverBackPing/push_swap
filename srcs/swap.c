@@ -6,7 +6,7 @@
 /*   By: sjossain <sjossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 17:59:01 by sjossain          #+#    #+#             */
-/*   Updated: 2024/06/24 04:11:29 by sjossain         ###   ########.fr       */
+/*   Updated: 2024/06/24 14:58:49 by sjossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,11 @@ int	main(int argc, char **argv)
 		ft_printf("  %d                     \n", stack_a->content);
 		stack_a = stack_a->next;
 	}
-	ft_printf(" -------------\n");
-	ft_printf("stack A  stack B\n");
+	if (stack_a == NULL)
+	{
+		ft_printf(" -------------\n");
+		ft_printf("stack A  stack B\n");
+	}
 	/*ft_printf(" -------------\n");
 
 	merge(a_head, stack_b);

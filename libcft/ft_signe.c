@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_signe.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sjossain <sjossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 02:46:36 by sjossain          #+#    #+#             */
-/*   Updated: 2024/06/24 17:53:49 by sjossain         ###   ########.fr       */
+/*   Created: 2024/06/24 17:10:42 by sjossain          #+#    #+#             */
+/*   Updated: 2024/06/24 18:55:16 by sjossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-#include <stdio.h>
 
-int	ft_isdigit(int c)
+int		ft_signe(int c)
 {
-	if ((c >= 48 && c <= 57) || (c == 45 || c == 43))
+	if (c == 45 || c == 43)
 	{
 		return (0);
 	}
@@ -23,5 +22,5 @@ int	ft_isdigit(int c)
 }
 /*int	main(void)
 {
-	printf("%d\n", ft_isdigit('6'));
+	printf("%d\n", ft_signe('+'));
 }*/

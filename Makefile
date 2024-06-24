@@ -21,7 +21,7 @@ LIBC = libcft/ft_isalpha.c libcft/ft_isdigit.c libcft/ft_isalnum.c libcft/ft_isa
 	libcft/ft_putchar_fd.c libcft/ft_putstr_fd.c libcft/ft_putendl_fd.c libcft/ft_putnbr_fd.c libcft/ft_split.c\
 	libcft/ft_lstnew_bonus.c libcft/ft_lstadd_front_bonus.c libcft/ft_lstsize_bonus.c libcft/ft_lstlast_bonus.c\
 	libcft/ft_lstadd_back_bonus.c libcft/ft_lstdelone_bonus.c libcft/ft_lstclear_bonus.c\
-	libcft/ft_lstiter_bonus.c libcft/ft_lstmap_bonus.c
+	libcft/ft_lstiter_bonus.c libcft/ft_lstmap_bonus.c libcft/ft_atol.c libcft/ft_signe.c libcft/isspace.c
 
 LIBFT_OBJS = $(LIBC:.c=.o)
 
