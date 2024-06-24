@@ -19,7 +19,6 @@
 # include <stdarg.h>
 # include <limits.h>
 
-int		ft_atoi(const char *str);
 int		check_type(char *format, va_list copy);
 int		ft_converse_base(char *format, va_list copy);
 int		get_char(char *format, va_list copy);

@@ -39,7 +39,7 @@ PRINTF_OBJS = $(PRINTF_SRC:.c=.o)
 
 #########################################################
 
-SRC = srcs/data_link.c srcs/swap.c
+SRC = srcs/data_link.c srcs/parsing.c srcs/swap.c srcs/check.c
 
 SRCS = ${SRC} ${LIBC} ${PRINTF_SRC}
 
@@ -49,7 +49,7 @@ INCLUDES = -Iincludes -I$(LIBFT_DIR) -I$(PRINTF_DIR)
 
 #########################################################
 
-all: $(LIBFT) $(PRINTF) main
+all: $(LIBFT) $(PRINTF) push_swap
 
 $(LIBFT): $(LIBFT_OBJS)
 		ar rcs $(LIBFT) $(LIBFT_OBJS)
@@ -57,8 +57,8 @@ $(LIBFT): $(LIBFT_OBJS)
 $(PRINTF): $(PRINTF_OBJS)
 		ar rcs $(PRINTF) $(PRINTF_OBJS)
 
-main: $(OBJS) $(LIBFT) $(PRINTF)
-	 $(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT) $(PRINTF) -L. -lft -lftprintf -o main
+push_swap: $(OBJS) $(LIBFT) $(PRINTF)
+	 $(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT) $(PRINTF) -L. -lft -lftprintf -o push_swap
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
@@ -67,7 +67,7 @@ clean:
 	$(RM) $(OBJS) $(LIBFT_OBJS) $(PRINTF_OBJS)
 
 fclean: clean
-	$(RM) $(LIBFT) $(PRINTF) main
+	$(RM) $(LIBFT) $(PRINTF) push_swap
 
 re: fclean all
 
