@@ -22,9 +22,9 @@ int	check_overflow(char *data)
 {
 	long	num;
 
-	num = ft_atol(data);
+	num = ft_atol((char *)data);
 	if (num > INT_MAX || num < INT_MIN)
-		return (1);
+		return (-1);
 	return (0);
 }
 
@@ -71,6 +71,7 @@ int	check_space(char *data, data_s **stack_a)
 		while (str[i] != NULL)
 		{
 			check = check_data(str[i]);
+			check = check_overflow(str[i]);
 			if (check == -1)
 				return (dest_free(str), check);
 			content = ft_atol(str[i]);
@@ -85,17 +86,10 @@ int	check_space(char *data, data_s **stack_a)
 int	check_init(char *data, data_s **stack_a)
 {
 	int		check;
-	int		process;
 
 	check = 0;
-	process = 1;
 	check = ft_isspace(data);
-	if ( check == 0)
-	{
-		process = 0;
-		check = check_data(data);
-	}
-	if (process)
+	if (check == 1)
 	{
 		if (check == -1)
 			return (check);
@@ -104,9 +98,11 @@ int	check_init(char *data, data_s **stack_a)
 			return (check);
 		check = 2;
 	}
-	if (check_overflow(data))
+	if (check == 0)
 	{
-		check = -1;
+		check = check_data(data);
+		if (check_overflow(data))
+			check = -1;
 	}
 	return (check);
 }

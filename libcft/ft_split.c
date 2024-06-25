@@ -6,7 +6,7 @@
 /*   By: sjossain <sjossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 12:16:58 by sjossain          #+#    #+#             */
-/*   Updated: 2024/06/25 02:05:02 by sjossain         ###   ########.fr       */
+/*   Updated: 2024/06/26 00:34:21 by sjossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,9 +117,10 @@ char	**ft_split(char const *s, char c)
  	char *str2 = "hello world ahhhh salut";
  	char c = ' ';
  	str =	ft_split(str2, c);
- 	while (str && str[m])
+ 	while (str[m])
  	{
- 		printf("word: %s\n", str[m]);
+		ft_putstr(str[m]);
+		printf("\n");
  		m++;
  	}
  	dest_free(str);
