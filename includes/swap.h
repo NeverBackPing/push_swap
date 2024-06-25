@@ -24,9 +24,11 @@ typedef struct data_struct
 	struct data_struct	*next;
 }	data_s;
 //Checker
+int		check_data(char *data);
 void	error_init(data_s **lst);
-int		check_init(char *data);
+int		check_init(char *data, data_s **stack_a);
 int		check_overflow(char *data);
+int		check_space(char *data, data_s **stack_a);
 //Data structure
 data_s	*mew_data(int content);
 void	add_data(data_s **lst, data_s *new);

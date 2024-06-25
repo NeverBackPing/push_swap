@@ -6,7 +6,7 @@
 /*   By: sjossain <sjossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 12:16:58 by sjossain          #+#    #+#             */
-/*   Updated: 2024/06/19 00:19:01 by sjossain         ###   ########.fr       */
+/*   Updated: 2024/06/25 02:05:02 by sjossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,11 @@ char	**ft_split(char const *s, char c)
 	while (!(raw == 0 || *s == '\0') && i < raw)
 	{
 		col = find_len(s, c, find_index(s, c, i));
-		dest[i] = (char *) malloc((col) * sizeof(char));
+		dest[i] = (char *) malloc((col + 1) * sizeof(char));
 		if (!dest[i])
 			return (dest_free(dest));
 		while (j++ < col)
 			ft_strlcpy(dest[i], &s[find_index(s, c, i)], col);
-		dest[i][j] = '\0';
 		j = 0;
 		i++;
 	}
@@ -111,28 +110,18 @@ char	**ft_split(char const *s, char c)
 }
 /*int	main(void)
 {
-	size_t i;
- 	size_t j;
-	size_t k;
  	int m;
 
  	m = 0;
  	char **str;
- 	char *str2 = "";
+ 	char *str2 = "hello world ahhhh salut";
  	char c = ' ';
  	str =	ft_split(str2, c);
- 	i = count_word(str2, c);
- 	j = find_index(str2, c, 0);
- 	k = find_len(str2, c, 2);
- 	printf("count word: %ld\n", i);
- 	printf("word index: %ld\n", j);
- 	printf("word len %ld\n", k);
-	printf("str ptr: %p\n", str);
  	while (str && str[m])
  	{
  		printf("word: %s\n", str[m]);
  		m++;
  	}
- 	free(str);
+ 	dest_free(str);
  	return (0);
 }*/

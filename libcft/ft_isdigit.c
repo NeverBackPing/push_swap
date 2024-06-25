@@ -6,20 +6,28 @@
 /*   By: sjossain <sjossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 02:46:36 by sjossain          #+#    #+#             */
-/*   Updated: 2024/06/24 17:53:49 by sjossain         ###   ########.fr       */
+/*   Updated: 2024/06/25 02:42:58 by sjossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-#include <stdio.h>
 
-int	ft_isdigit(int c)
+int	ft_isdigit(char *str)
 {
-	if ((c >= 48 && c <= 57) || (c == 45 || c == 43))
+	int	i;
+	int	check;
+
+	i = 0;
+	check = -1;
+	while (str[i] != '\0')
 	{
-		return (0);
+		if ((str[i] == 32) || ((str[i] >= 48 && str[i]<= 57) ) || ft_signe(str) == 0)
+		{
+			check++;
+		}
+		i++;
 	}
-	return (1);
+	return (check);
 }
 /*int	main(void)
 {
