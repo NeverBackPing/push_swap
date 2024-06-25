@@ -31,31 +31,21 @@ int	check_overflow(char *data)
 int	check_data(char *data)
 {
 	int	check;
-	int	i;
 
-	i = 0;
 	check = 0;
-	while (data[i])
+	if (ft_isdigit(data) > -1)
 	{
-		printf("hellaaaaaaaaaaaaaaa\n");
-		if (ft_isdigit(data) > -1)
-		{
-			if (ft_signe(data) == 0)
-				NULL ;
-			else
-			{
-				printf("bonjour\n");
-				return (check++ ,check);
-			}
-		}
+		if (ft_signe(data) < 1)
+			NULL ;
 		else
 		{
-			printf("salutr\n");
-			return (check++, check);
+			return (check = -1 ,check);
 		}
-		i++;
 	}
-	printf("sa\n");
+	else
+	{
+			return (check = -1, check);
+	}
 	return (check);
 }
 
@@ -73,16 +63,15 @@ int	check_space(char *data, data_s **stack_a)
 	content = 0;
 	if (ft_isspace(data) > 0)
 	{
-		if (check_data(data) == 0)
+		check = check_data(data);
+		if (check == 0)
 			str = ft_split(data, ' ');
-		printf("hhhhhhhhhhhhhh\n");
-		if (str == NULL)
-			return (check++, check);
+		if (str == NULL || check == -1)
+			return (check = -1, check);
 		while (str[i] != NULL)
 		{
-			printf("hell15151515151\n");
 			check = check_data(str[i]);
-			if (check == 1)
+			if (check == -1)
 				return (dest_free(str), check);
 			content = ft_atol(str[i]);
 			data_a = mew_data(content);
@@ -90,8 +79,7 @@ int	check_space(char *data, data_s **stack_a)
 			i++;
 		}
 	}
-	printf("hello\n");
-	return (dest_free(str), printf("%d\n", check), check);
+	return (dest_free(str), check);
 }
 
 int	check_init(char *data, data_s **stack_a)
@@ -101,23 +89,24 @@ int	check_init(char *data, data_s **stack_a)
 
 	check = 0;
 	process = 1;
-	if (ft_isspace(data) == 0)
+	check = ft_isspace(data);
+	if ( check == 0)
 	{
 		process = 0;
 		check = check_data(data);
 	}
 	if (process)
 	{
+		if (check == -1)
+			return (check);
 		check = check_space(data, stack_a);
-		if (check == 1)
+		if (check == -1)
 			return (check);
 		check = 2;
 	}
 	if (check_overflow(data))
 	{
-		printf("%d\n", check);
-		check = 1;
+		check = -1;
 	}
-	printf("%d\n", check);
 	return (check);
 }

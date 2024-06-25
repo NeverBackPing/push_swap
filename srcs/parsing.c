@@ -19,24 +19,21 @@ int	init_stack(char **str, data_s **stack_a)
 	int		check;
 	int		i;
 
-
 	i = 1;
 	data = 0;
 	check = 0;
 	while (str[i] != NULL)
 	{
 		check = check_init(str[i], stack_a);
-		if (check == 1)
+		if (check == -1)
 		{
 			error_init(stack_a);
 			return (1);
 		}
 		if (check == 2)
 			NULL;
-		printf("%d\n", check);
 		if (check == 0)
 		{
-
 			data = ft_atol(str[i]);
 			data_a = mew_data(data);
 			add_data(stack_a, data_a);
