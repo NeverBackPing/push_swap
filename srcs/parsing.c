@@ -78,11 +78,9 @@ int	array_data(data_s **stack_a)
 		while (data_a)
 		{
 			check = data_a;
-			data_a = data_a->next;
-			if (data_a == NULL)
-				return (0);
 			if (check->content == data_a->content)
 				return (1);
+			data_a = data_a->next;
 		}
 		return (0);
 }
