@@ -12,6 +12,41 @@
 
 #include "../includes/swap.h"
 
+int	ft_digit_array(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == 45 || str[i] == 43)
+		i++;
+	while (str[i] != '\0')
+	{
+		if (!(str[i] >= 48 && str[i] <= 57))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+int pars_array(char **str)
+{
+	int	j;
+	int	i;
+
+	i = 0;
+	j = 0;
+	while (str[i] != NULL)
+	{
+		while (str[i][j] != '\0')
+		{
+			if (ft_digit_array(&str[i][j]))
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 int	init_stack(char **str, data_s **stack_a)
 {
 	data_s	*data_a;

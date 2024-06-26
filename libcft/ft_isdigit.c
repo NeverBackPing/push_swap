@@ -6,21 +6,41 @@
 /*   By: sjossain <sjossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 02:46:36 by sjossain          #+#    #+#             */
-/*   Updated: 2024/06/26 14:39:54 by sjossain         ###   ########.fr       */
+/*   Updated: 2024/06/26 19:18:43 by sjossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int	check(int first, int second, int digit)
+int	check(int first, int second, int digit, char *str)
 {
-	if (first == 32)
+	int	i;
+	int	check;
+
+	i = 0;
+	check = 0;
+	while (str[i] != '\0')
 	{
-		if (second == 45 || second == 43)
+		if (str[i] == ' ')
+			check = 1;
+		i++;
+	}
+	if (check == 1)
+		NULL;
+	else
+		return (0);
+	if (second == 32)
+	{
+		if ((first == 45 || first== 43))
 			return (1);
 	}
-	if ((second == 45 || second == 43) && (digit >= 48 && digit <= 57))
-		return (1);
+	if ((first == 45 || first == 43) && (digit >= 48 && digit <= 57))
+	{
+		if (first == 45 && digit == 48)
+			return (0);
+		else
+			return (1);
+	}
 	else
 		return (0);
 }
@@ -28,33 +48,37 @@ int	check(int first, int second, int digit)
 int check_signe(char *str)
 {
 	int		i;
-	//int		check;
+	int		first;
+	int		second;
 
 	i = 0;
-	//check = 0;
+	first = 0;
+	second = 0;
 	while (str[i] != '\0')
 	{
-		if ((str[i]== 45 || str[i] == 43))
+		if (i == 0)
+			second = str[i];
+		if ((str[i] == 45 || str[i] == 43))
 		{
-			if (str[i - 1] == 32 || i == 0)
-				NULL;
-			else
-				return (1);
+			first = str[i];
 			i++;
 			if ((str[i] >= 48 && str[i] <= 57))
 			{
-				if(check(str[i - 2], str[i - 1], str[i]))
-					return (0);
+				if(check(first, second, str[i], str))
+						NULL;
 				else
 					return (1);
 			}
 			else
 				return (1);
 		}
+		second = str[i];
 		i++;
+		first = str[i];
 	}
 	return (0);
 }
+
 int	good_digit(int c)
 {
 	int		check;
@@ -68,6 +92,7 @@ int	good_digit(int c)
 			check++;
 	return (check);
 }
+
 int	check_digit(int c, char *str)
 {
 	int		check;
@@ -102,6 +127,7 @@ int	ft_isdigit(char *str)
 	check = 0;
 	while (str[i] != '\0')
 	{
+
 		check = check_digit(str[i], str);
 		if (check == -1)
 			return (check = -1, check);

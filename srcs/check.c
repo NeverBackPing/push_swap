@@ -66,7 +66,7 @@ int	check_space(char *data, data_s **stack_a)
 		check = check_data(data);
 		if (check == 0)
 			str = ft_split(data, ' ');
-		if (str == NULL || check == -1)
+		if (str == NULL || check == -1 || pars_array(str))
 			return (check = -1, check);
 		while (str[i] != NULL)
 		{
@@ -100,6 +100,8 @@ int	check_init(char *data, data_s **stack_a)
 	}
 	if (check == 0)
 	{
+		if (data[0] == '\0')
+			return (-1);
 		check = check_data(data);
 		if (check_overflow(data))
 			check = -1;

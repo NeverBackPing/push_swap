@@ -6,7 +6,7 @@
 /*   By: sjossain <sjossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 12:21:10 by sjossain          #+#    #+#             */
-/*   Updated: 2024/06/25 14:18:33 by sjossain         ###   ########.fr       */
+/*   Updated: 2024/06/26 19:42:23 by sjossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ long	ft_atol(const char *str)
 	}
 	while (str[i] != '\0')
 	{
-		if (ft_isdigit((char *)str) < 0)
-			return (number = -1, number);
 		number = number * 10 + (str[i++] - '0');
 	}
 	return (number * sign);
