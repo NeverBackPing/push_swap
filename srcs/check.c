@@ -66,14 +66,14 @@ int	check_space(char *data, data_s **stack_a)
 		check = check_data(data);
 		if (check == 0)
 			str = ft_split(data, ' ');
-		if (str == NULL || check == -1 || pars_array(str))
+		if (str == NULL || check == -1)
 			return (check = -1, check);
 		while (str[i] != NULL)
 		{
 			check = check_data(str[i]);
 			check = check_overflow(str[i]);
-			if (check == -1)
-				return (dest_free(str), check);
+			if (check == -1 || pars_array(str[i]))
+				return (dest_free(str), check = -1,check);
 			content = ft_atol(str[i]);
 			data_a = mew_data(content);
 			add_data(stack_a, data_a);
@@ -102,7 +102,7 @@ int	check_init(char *data, data_s **stack_a)
 	{
 		if (data[0] == '\0')
 			return (-1);
-		check = check_data(data);
+		check = single_data(data);
 		if (check_overflow(data))
 			check = -1;
 	}

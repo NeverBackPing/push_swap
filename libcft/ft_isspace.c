@@ -19,6 +19,10 @@ int	ft_isspace(char *str)
 
 	i = 0;
 	check = 0;
+	if (ft_strchr(str, ' ') != NULL)
+		NULL ;
+	else
+		return(0);
 	while (str[i] != '\0')
 	{
 		if (str[i] == 32)

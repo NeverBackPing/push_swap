@@ -36,7 +36,9 @@ void	data_clear(data_s **lst);
 void	data_delone(data_s *lst);
 void	merge(data_s *stack_a, data_s *stack_b);
 //Parsing
+int		array_data(data_s **stack_a);
 int		init_stack(char **str, data_s **stack_a);
-int		pars_array(char **str);
+int		pars_array(char *str);
 int		ft_digit_array(char *str);
+int		single_data(char *data);
 #endif

@@ -107,7 +107,10 @@ int	check_digit(int c, char *str)
 		return (check = -1, check);
 	check = check_signe(str);
 	if (check == 0)
+	{
 		check++;
+		return (check);
+	}
 	else
 	{
 		check = -1;
