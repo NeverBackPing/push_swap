@@ -68,6 +68,24 @@ int	single_data(char *data)
 	return (check);
 }
 
+int	doublon(data_s **s, int c)
+{
+	data_s	*data_a;
+
+	data_a = *s;
+	while (data_a)
+	{
+		if (data_a->next == NULL)
+				return (0);
+		printf("loop: %d\n", (int)data_a->content );
+		if ((int)data_a->content == c)
+			return (1);
+		data_a = data_a->next;
+	}
+	printf("%d\n", (int)data_a->content );
+	return (0);
+}
+
 int	array_data(data_s **stack_a)
 {
 		data_s	*data_a;
@@ -78,12 +96,37 @@ int	array_data(data_s **stack_a)
 		while (data_a)
 		{
 			check = data_a;
-			if (check->content == data_a->content)
-				return (1);
 			data_a = data_a->next;
+			if (data_a == NULL)
+				return (0);
+			if (doublon(&check, data_a->content))
+				return (1);
 		}
 		return (0);
 }
+
+/*int	array_data(data_s **stack_a)
+{
+		data_s	*data_a;
+		data_s	*check;
+		data_s	*head;
+
+		data_a = NULL;
+		check = NULL;
+		head = *stack_a;
+		while (head)
+		{
+			*data_a = *head->next;
+			while (check)
+			{
+				if (data_a->content == (int)check->content)
+				return (1);
+				check = check->next;
+			}
+			head = head->next;
+		}
+		return (0);
+}*/
 
 int	init_stack(char **str, data_s **stack_a)
 {
