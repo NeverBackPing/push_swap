@@ -36,16 +36,18 @@ int	check_data(char *data)
 	if (ft_isdigit(data) > -1)
 	{
 		if (ft_signe(data) < 1)
-			NULL ;
-		else
 		{
-			return (check = -1 ,check);
+			printf("HHHHHHHHH\n");
+			if (!(data[0] == '-' && data[1] == '0'))
+				NULL;
+			else
+				return (check = -1 ,check);
 		}
+		else
+			return (check = -1 ,check);
 	}
 	else
-	{
 			return (check = -1, check);
-	}
 	return (check);
 }
 

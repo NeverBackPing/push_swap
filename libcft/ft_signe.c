@@ -19,7 +19,7 @@ int	just_num(char *str)
 
 	i = 0;
 	check = 1;
-	while ((str[i] >= 48 && str[i] <= 57))
+	while ((str[i] >= 48 && str[i] <= 57) || (str[i]== 45 || str[i] == 43))
 	{
 		if (!(str[i] >= 48 && str[i] <= 57))
 		{
@@ -50,6 +50,8 @@ int		ft_signe(char *str)
 			{
 				check_signe++;
 				j++;
+				if ((str[i] == '-' && str[j] == '0'))
+					return (1);
 				while (str[j] >= 48 && str[j] <= 57)
 						j++;
 				if ((str[j]== 45 || str[j] == 43) && (str[i] != 32))
