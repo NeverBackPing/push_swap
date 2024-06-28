@@ -12,6 +12,12 @@
 
 #include "../includes/swap.h"
 
+void	error_init(data_s **lst)
+{
+	data_clear(lst);
+	write(2, "Error\n", 6);
+}
+
 int	ft_digit_array(char *str)
 {
 	int	i;
@@ -20,7 +26,7 @@ int	ft_digit_array(char *str)
 	if (str[i] == 45 || str[i] == 43)
 		i++;
 	if (str[i] >= 48 && str[i] <= 57)
-			NULL;
+		NULL;
 	else
 		return (1);
 	while (str[i] != '\0')
@@ -32,7 +38,7 @@ int	ft_digit_array(char *str)
 	return (0);
 }
 
-int pars_array(char *str)
+int	pars_array(char *str)
 {
 	int	i;
 
@@ -46,82 +52,37 @@ int pars_array(char *str)
 	return (0);
 }
 
-int	single_data(char *data)
+int	check_pars(char *str, int check, data_s **stack_a)
 {
-	int	check;
-
-	check = 0;
-	if (pars_array(data) == 0)
-	{
-		if (ft_signe(data) < 1)
-		{
-			if (!(data[0] == '-' && data[1] == '0'))
-				NULL;
-			else
-				return (check = -1 ,check);
-		}
-		else
-			return (check = -1 ,check);
-	}
-	else
-		return (check = -1, check);
-	return (check);
-}
-
-int	doublon(data_s **s, int c)
-{
+	int		data;
 	data_s	*data_a;
 
-	data_a = *s;
-	while (data_a)
-	{
-		if ((int)data_a->content == c)
+	data = 0;
+	if (check == -1)
 		return (1);
-		data_a = data_a->next;
-	}
-	return (0);
-}
-
-int	array_data(data_s **stack_a)
-{
-	data_s	*data_a;
-	data_s	*check;
-
-	data_a = *stack_a;
-	check = data_a;
-	while (check)
+	if (check == 2)
+		NULL;
+	if (check == 0)
 	{
-		data_a = data_a->next;
-		if (doublon(&data_a, check->content))
-		return (1);
-		check = check->next;
+		data = ft_atol(str);
+		data_a = mew_data(data);
+		add_data(stack_a, data_a);
 	}
 	return (0);
 }
 
 int	init_stack(char **str, data_s **stack_a)
 {
-	data_s	*data_a;
-	int		data;
 	int		check;
 	int		i;
 
 	i = 1;
-	data = 0;
 	check = 0;
 	while (str[i] != NULL)
 	{
 		check = check_init(str[i], stack_a);
-		if (check == -1)
+		if (check_pars(str[i], check, stack_a))
 			return (error_init(stack_a), 1);
-		if (check == 2)
-			NULL;
-		if (check == 0)
-		{
-			data = ft_atol(str[i]);
-			data_a = mew_data(data);
-			add_data(stack_a, data_a);
-		}
 		i++;
 	}
 	if (array_data(stack_a) == 0)

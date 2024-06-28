@@ -31,52 +31,26 @@ int	check(int first, int second, int digit, char *str)
 		return (0);
 	if (second == 32)
 	{
-		if ((first == 45 || first== 43))
+		if ((first == 45 || first == 43))
 			return (1);
 	}
+	if (check_part2(first, digit))
+		return (0);
+	else
+		return (1);
+}
+
+int	check_part2(int first, int digit)
+{
 	if ((first == 45 || first == 43) && (digit >= 48 && digit <= 57))
 	{
 		if (first == 45 && digit == 48)
-			return (0);
-		else
 			return (1);
+		else
+			return (0);
 	}
 	else
 		return (0);
-}
-
-int check_signe(char *str)
-{
-	int		i;
-	int		first;
-	int		second;
-
-	i = 0;
-	first = 0;
-	second = 0;
-	while (str[i] != '\0')
-	{
-		if (i == 0)
-			second = str[i];
-		if ((str[i] == 45 || str[i] == 43))
-		{
-			first = str[i];
-			i++;
-			if ((str[i] >= 48 && str[i] <= 57))
-			{
-				if(check(first, second, str[i], str))
-						NULL;
-				else
-					return (1);
-			}
-			else
-				return (1);
-		}
-		second = str[i];
-		i++;
-		first = str[i];
-	}
-	return (0);
 }
 
 int	good_digit(int c)
@@ -86,7 +60,7 @@ int	good_digit(int c)
 	check = 0;
 	if (c == 32)
 		check++;
-	if ((c >= 48 && c<= 57))
+	if ((c >= 48 && c <= 57))
 		check++;
 	if (c == 45 || c == 43)
 			check++;
@@ -130,7 +104,6 @@ int	ft_isdigit(char *str)
 	check = 0;
 	while (str[i] != '\0')
 	{
-
 		check = check_digit(str[i], str);
 		if (check == -1)
 			return (check = -1, check);

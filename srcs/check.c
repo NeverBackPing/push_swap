@@ -6,17 +6,11 @@
 /*   By: sjossain <sjossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 17:59:01 by sjossain          #+#    #+#             */
-/*   Updated: 2024/06/22 16:40:14 by sjossain         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:11:16 by sjossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/swap.h"
-
-void	error_init(data_s **lst)
-{
-	data_clear(lst);
-	write(2, "Error\n", 6);
-}
 
 int	check_overflow(char *data)
 {
@@ -37,23 +31,37 @@ int	check_data(char *data)
 	{
 		if (ft_signe(data) < 1)
 		{
-			printf("HHHHHHHHH\n");
 			if (!(data[0] == '-' && data[1] == '0'))
 				NULL;
 			else
-				return (check = -1 ,check);
+				return (check = -1, check);
 		}
 		else
-			return (check = -1 ,check);
+			return (check = -1, check);
 	}
 	else
-			return (check = -1, check);
+		return (check = -1, check);
+	return (check);
+}
+
+int	check_format(char *str, int content, data_s **stack)
+{
+	int		check;
+	data_s	*data_a;
+
+	check = 0;
+	check = check_data(str);
+	check = check_overflow(str);
+	if (check == -1 || pars_array(str))
+		return (check = -1, check);
+	content = ft_atol(str);
+	data_a = mew_data(content);
+	add_data(stack, data_a);
 	return (check);
 }
 
 int	check_space(char *data, data_s **stack_a)
 {
-	data_s	*data_a;
 	int		content;
 	int		check;
 	char	**str;
@@ -72,13 +80,9 @@ int	check_space(char *data, data_s **stack_a)
 			return (check = -1, check);
 		while (str[i] != NULL)
 		{
-			check = check_data(str[i]);
-			check = check_overflow(str[i]);
-			if (check == -1 || pars_array(str[i]))
-				return (dest_free(str), check = -1,check);
-			content = ft_atol(str[i]);
-			data_a = mew_data(content);
-			add_data(stack_a, data_a);
+			check = check_format(str[i], content, stack_a);
+			if (check == -1)
+				return (dest_free(str), check = -1, check);
 			i++;
 		}
 	}

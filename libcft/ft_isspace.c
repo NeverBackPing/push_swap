@@ -22,7 +22,7 @@ int	ft_isspace(char *str)
 	if (ft_strchr(str, ' ') != NULL)
 		NULL ;
 	else
-		return(0);
+		return (0);
 	while (str[i] != '\0')
 	{
 		if (str[i] == 32)
@@ -30,7 +30,7 @@ int	ft_isspace(char *str)
 		check = ft_isdigit(str);
 		if (check == 1)
 			return (check);
-		if ( check == -1)
+		if (check == -1)
 			return (check = -1, check);
 		i++;
 	}

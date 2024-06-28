@@ -21,7 +21,7 @@ LIBC = libcft/ft_isalpha.c libcft/ft_isdigit.c libcft/ft_isalnum.c libcft/ft_isa
 	libcft/ft_putchar_fd.c libcft/ft_putstr_fd.c libcft/ft_putendl_fd.c libcft/ft_putnbr_fd.c libcft/ft_split.c\
 	libcft/ft_lstnew_bonus.c libcft/ft_lstadd_front_bonus.c libcft/ft_lstsize_bonus.c libcft/ft_lstlast_bonus.c\
 	libcft/ft_lstadd_back_bonus.c libcft/ft_lstdelone_bonus.c libcft/ft_lstclear_bonus.c libcft/ft_isspace.c\
-	libcft/ft_lstiter_bonus.c libcft/ft_lstmap_bonus.c libcft/ft_atol.c libcft/ft_signe.c
+	libcft/ft_lstiter_bonus.c libcft/ft_lstmap_bonus.c libcft/ft_atol.c libcft/ft_signe.c libcft/ft_isdigitsigne.c
 
 LIBFT_OBJS = $(LIBC:.c=.o)
 
@@ -39,7 +39,7 @@ PRINTF_OBJS = $(PRINTF_SRC:.c=.o)
 
 #########################################################
 
-SRC = srcs/data_link.c srcs/parsing.c srcs/swap.c srcs/check.c
+SRC = srcs/data_link.c srcs/parsing.c srcs/swap.c srcs/check.c srcs/single_data.c
 
 SRCS = ${SRC} ${LIBC} ${PRINTF_SRC}
 
