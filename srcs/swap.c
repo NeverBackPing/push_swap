@@ -14,6 +14,7 @@
 
 void	view_data(data_s *stack_a)
 {
+	ft_printf("Init a and b\n");
 	while (stack_a != NULL)
 	{
 		ft_printf("  %d\n", stack_a->content);
@@ -38,12 +39,11 @@ int	main(int argc, char **argv)
 	data_s	*stack_a;
 	data_s	*a_head;
 
+	stack_a = NULL;
 	if (argc == 1)
 		write(2, "Error\n", 6);
 	else
 	{
-		stack_a = NULL;
-		ft_printf("Init a and b\n");
 		if (init_stack(argv, &stack_a))
 			return (2);
 		a_head = stack_a;

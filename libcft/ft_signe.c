@@ -43,7 +43,9 @@ int	good_array_part2(char *str, int j, int i)
 		if ((str[i] == '-' && str[j] == '0'))
 			return (1);
 		while (str[j] >= 48 && str[j] <= 57)
-				j++;
+		{
+			j++;
+		}
 		if ((str[j] == 45 || str[j] == 43) && (str[i] != 32))
 			check_signe++;
 		if (check_signe > 1)

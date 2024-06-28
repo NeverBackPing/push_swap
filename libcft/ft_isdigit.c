@@ -63,7 +63,7 @@ int	good_digit(int c)
 	if ((c >= 48 && c <= 57))
 		check++;
 	if (c == 45 || c == 43)
-			check++;
+		check++;
 	return (check);
 }
 
