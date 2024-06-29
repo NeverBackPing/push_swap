@@ -34,9 +34,9 @@ int	single_data(char *data)
 	return (check);
 }
 
-int	doublon(data_s **s, int c)
+int	doublon(t_data **s, int c)
 {
-	data_s	*data_a;
+	t_data	*data_a;
 
 	data_a = *s;
 	while (data_a)
@@ -48,10 +48,10 @@ int	doublon(data_s **s, int c)
 	return (0);
 }
 
-int	array_data(data_s **stack_a)
+int	array_data(t_data **stack_a)
 {
-	data_s	*data_a;
-	data_s	*check;
+	t_data	*data_a;
+	t_data	*check;
 
 	data_a = *stack_a;
 	check = data_a;

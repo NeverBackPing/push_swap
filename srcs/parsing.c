@@ -12,7 +12,7 @@
 
 #include "../includes/swap.h"
 
-void	error_init(data_s **lst)
+void	error_init(t_data **lst)
 {
 	data_clear(lst);
 	write(2, "Error\n", 6);
@@ -52,10 +52,10 @@ int	pars_array(char *str)
 	return (0);
 }
 
-int	check_pars(char *str, int check, data_s **stack_a)
+int	check_pars(char *str, int check, t_data **stack_a)
 {
 	int		data;
-	data_s	*data_a;
+	t_data	*data_a;
 
 	data = 0;
 	if (check == -1)
@@ -71,7 +71,7 @@ int	check_pars(char *str, int check, data_s **stack_a)
 	return (0);
 }
 
-int	init_stack(char **str, data_s **stack_a)
+int	init_stack(char **str, t_data **stack_a)
 {
 	int		check;
 	int		i;

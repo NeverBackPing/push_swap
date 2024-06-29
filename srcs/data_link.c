@@ -12,11 +12,11 @@
 
 #include "../includes/swap.h"
 
-data_s	*mew_data(int content)
+t_data	*mew_data(int content)
 {
-	data_s	*node;
+	t_data	*node;
 
-	node = malloc(sizeof(data_s));
+	node = malloc(sizeof(t_data));
 	if (node == NULL)
 		return (NULL);
 	node->content = content;
@@ -24,7 +24,7 @@ data_s	*mew_data(int content)
 	return (node);
 }
 
-void	add_data(data_s **lst, data_s *new)
+void	add_data(t_data **lst, t_data *new)
 {
 	if (new == NULL || lst == NULL)
 		return ;
@@ -32,19 +32,19 @@ void	add_data(data_s **lst, data_s *new)
 	*lst = new;
 }
 
-void	data_delone(data_s *lst)
+void	data_delone(t_data *lst)
 {
 	if (lst == NULL)
 		return ;
 	free (lst);
 }
 
-void	merge(data_s *stack_a, data_s *stack_b)
+void	merge(t_data *stack_a, t_data *stack_b)
 {
-	data_s	*a_head;
-	data_s	*b_head;
-	data_s	*a_next;
-	data_s	*b_next;
+	t_data	*a_head;
+	t_data	*b_head;
+	t_data	*a_next;
+	t_data	*b_next;
 
 	a_head = stack_a;
 	b_head = stack_b;
@@ -60,10 +60,10 @@ void	merge(data_s *stack_a, data_s *stack_b)
 	stack_b = b_head;
 }
 
-void	data_clear(data_s **lst)
+void	data_clear(t_data **lst)
 {
-	data_s	*tmp;
-	data_s	*tmp2;
+	t_data	*tmp;
+	t_data	*tmp2;
 
 	tmp = *lst;
 	tmp2 = *lst;

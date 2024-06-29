@@ -18,31 +18,37 @@
 # include "libft.h"
 # include "ft_printf.h"
 
-typedef struct data_struct
+typedef struct t_datatruct
 {
 	int					content;
-	struct data_struct	*next;
-}	data_s;
+	struct t_datatruct	*next;
+}	t_data;
 //Checker
 int		check_data(char *data);
-int		check_init(char *data, data_s **stack_a);
+int		check_init(char *data, t_data **stack_a);
 int		check_overflow(char *data);
-int		check_space(char *data, data_s **stack_a);
-int		check_format(char *str, int content, data_s **stack);
+int		check_space(char *data, t_data **stack_a);
+int		check_format(char *str, int content, t_data **stack);
+//Command
+int	lenstruct(t_data **stack);
+int		sa(t_data **stack_a);
+//void	road(t_data *stack_a, t_data *satck_b, char *str);
 //Data structure
-data_s	*mew_data(int content);
-void	add_data(data_s **lst, data_s *new);
-void	data_clear(data_s **lst);
-void	data_delone(data_s *lst);
-void	merge(data_s *stack_a, data_s *stack_b);
+t_data	*mew_data(int content);
+void	add_data(t_data **lst, t_data *new);
+void	data_clear(t_data **lst);
+void	data_delone(t_data *lst);
+void	merge(t_data *stack_a, t_data *stack_b);
 //Parsing
-void	error_init(data_s **lst);
-int		init_stack(char **str, data_s **stack_a);
+void	error_init(t_data **lst);
+int		init_stack(char **str, t_data **stack_a);
 int		pars_array(char *str);
 int		ft_digit_array(char *str);
-int		check_pars(char *str, int check, data_s **stack_a);
+int		check_pars(char *str, int check, t_data **stack_a);
 //Single Data
 int		single_data(char *data);
-int		doublon(data_s **s, int c);
-int		array_data(data_s **stack_a);
+int		doublon(t_data **s, int c);
+int		array_data(t_data **stack_a);
+//Swap
+int		stack_sort(t_data **stack_a);
 #endif

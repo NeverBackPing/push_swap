@@ -44,10 +44,10 @@ int	check_data(char *data)
 	return (check);
 }
 
-int	check_format(char *str, int content, data_s **stack)
+int	check_format(char *str, int content, t_data **stack)
 {
 	int		check;
-	data_s	*data_a;
+	t_data	*data_a;
 
 	check = 0;
 	check = check_data(str);
@@ -60,7 +60,7 @@ int	check_format(char *str, int content, data_s **stack)
 	return (check);
 }
 
-int	check_space(char *data, data_s **stack_a)
+int	check_space(char *data, t_data **stack_a)
 {
 	int		content;
 	int		check;
@@ -89,7 +89,7 @@ int	check_space(char *data, data_s **stack_a)
 	return (dest_free(str), check);
 }
 
-int	check_init(char *data, data_s **stack_a)
+int	check_init(char *data, t_data **stack_a)
 {
 	int		check;
 
