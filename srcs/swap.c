@@ -66,7 +66,6 @@ int	main(int argc, char **argv)
 {
 	t_data	*stack_a;
 	t_data	*a_head;
-	t_data	*a_head_second;
 
 	stack_a = NULL;
 	if (argc == 1)
@@ -79,9 +78,8 @@ int	main(int argc, char **argv)
 		if(stack_sort(&stack_a))
 			return (clear_stack(&a_head), 0);
 		view_data(stack_a);
-		//if (sa(&stack_a))
-		//	ft_printf("sa\n");
-		//view_data(stack_a);
+		road(&stack_a);
+		view_data(stack_a);
 		//road()
 		clear_stack(&a_head);
 	}

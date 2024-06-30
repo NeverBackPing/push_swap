@@ -37,7 +37,28 @@ int	sa(t_data **stack_a)
 	last = NULL;
 	if (head == NULL || head->next == NULL)
 		return (0);
-	while (head != NULL)
+	while (head->next != NULL)
+	{
+		last = head;
+		head = head->next;
+	}
+	last->next = NULL;
+	head->next = *stack_a;
+	*stack_a = head;
+	return (1);
+}
+
+int	rra(t_data **stack_a)
+{
+
+	t_data	*head;
+	t_data	*last;
+
+	head = *stack_a;
+	last = NULL;
+	if (head == NULL || head->next == NULL)
+		return (0);
+	while (head->next != NULL)
 	{
 		last = head;
 		head = head->next;

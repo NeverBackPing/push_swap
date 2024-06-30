@@ -12,8 +12,17 @@
 
 #include "../includes/swap.h"
 
-/*void	road(t_data *stack_a, t_data *stack_b, char *str)
+void	road(t_data **stack_a/*, t_data *stack_b, char *str*/)
 {
-	if (str == "sa" && sa(stack_a))
+	t_data	**head;
+	t_data	**head_sec;
+
+	head = stack_a;
+	head_sec= stack_a;
+	if (sa(head_sec))
+	{
+		head = head_sec;
+		sa(head);
 		ft_printf("sa\n");
-}*/
+	}
+}

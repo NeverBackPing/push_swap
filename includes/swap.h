@@ -32,7 +32,9 @@ int		check_format(char *str, int content, t_data **stack);
 //Command
 int	lenstruct(t_data **stack);
 int		sa(t_data **stack_a);
-//void	road(t_data *stack_a, t_data *satck_b, char *str);
+int		rra(t_data **stack_a);
+//Road
+void	road(t_data **stack_a/*, t_data *satck_b, char *str*/);
 //Data structure
 t_data	*mew_data(int content);
 void	add_data(t_data **lst, t_data *new);
