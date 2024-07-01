@@ -65,7 +65,6 @@ int	stack_sort(t_data **stack_a)
 int	main(int argc, char **argv)
 {
 	t_data	*stack_a;
-	t_data	*a_head;
 
 	stack_a = NULL;
 	if (argc == 1)
@@ -74,14 +73,13 @@ int	main(int argc, char **argv)
 	{
 		if (init_stack(argv, &stack_a))
 			return (2);
-		a_head = stack_a;
 		if(stack_sort(&stack_a))
-			return (clear_stack(&a_head), 0);
+			return (clear_stack(&stack_a), 0);
 		view_data(stack_a);
 		road(&stack_a);
 		view_data(stack_a);
 		//road()
-		clear_stack(&a_head);
+		clear_stack(&stack_a);
 	}
 	return (0);
 }

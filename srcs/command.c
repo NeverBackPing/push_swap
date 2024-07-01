@@ -54,6 +54,7 @@ int	rra(t_data **stack_a)
 	t_data	*head;
 	t_data	*last;
 
+	head = NULL;
 	head = *stack_a;
 	last = NULL;
 	if (head == NULL || head->next == NULL)

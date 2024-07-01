@@ -12,6 +12,20 @@
 
 #include "../includes/swap.h"
 
+void	sort(t_data **stack_a)
+{
+	t_data	**head;
+
+	head = stack_a;
+	if (lenstruct(head) <= 5)
+	{
+		/*small_data(&stack_a);*/
+	}
+	/*else
+		big_data(&stack_a);*/
+
+}
+
 void	road(t_data **stack_a/*, t_data *stack_b, char *str*/)
 {
 	t_data	**head;
