@@ -78,6 +78,13 @@ int	main(int argc, char **argv)
 		view_data(stack_a);
 		road(&stack_a);
 		view_data(stack_a);
+		stack_a = last(&stack_a);
+		printf("last stack a = %d\n", stack_a->content);
+		while (stack_a)
+		{
+			printf("stack_a = %d\n", stack_a->content);
+			stack_a = stack_a->prev;
+		}
 		//road()
 		clear_stack(&stack_a);
 	}

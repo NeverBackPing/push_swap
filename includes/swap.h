@@ -22,6 +22,7 @@ typedef struct t_datatruct
 {
 	int					content;
 	struct t_datatruct	*next;
+	struct t_datatruct	*prev;
 }	t_data;
 //Checker
 int		check_data(char *data);
@@ -42,6 +43,7 @@ void	add_data(t_data **lst, t_data *new);
 void	data_clear(t_data **lst);
 void	data_delone(t_data *lst);
 void	merge(t_data *stack_a, t_data *stack_b);
+t_data	*last(t_data **lst);
 //Parsing
 void	error_init(t_data **lst);
 int		init_stack(char **str, t_data **stack_a);

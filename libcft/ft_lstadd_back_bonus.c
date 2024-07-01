@@ -24,6 +24,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 
 	t_list *head = NULL;
+	t_list *heads;
 
     char *str1 = "A";
     char *str2 = "B";
@@ -42,13 +43,21 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	ft_lstadd_front(&head, node3);
 	ft_lstadd_front(&head, node4);
 
-	ft_lstadd_front(&head, node5);
-
+	ft_lstadd_back(&head, node5);
 	printf("ma liste chaine: \n\n");
+
+	heads = head;
     while (head != NULL)
 	{
         printf(" ----> | %s |\n", (char *)head->content);
         head = head->next;
+    }
+	printf(" --->|  NULL  |\n");
+	printf("\n");
+	while (heads != NULL)
+	{
+        printf(" ----> | %s |\n", (char *)heads->content);
+        heads = heads->prev;
     }
 	printf(" --->|  NULL  |\n");
 	free(head);

@@ -21,15 +21,31 @@ t_data	*mew_data(int content)
 		return (NULL);
 	node->content = content;
 	node->next = NULL;
+	node->prev = NULL;
 	return (node);
 }
 
 void	add_data(t_data **lst, t_data *new)
 {
-	if (new == NULL || lst == NULL)
+	int	end;
+
+	end = 0;
+	/*if (new == NULL || lst == NULL)
 		return ;
 	new->next = *lst;
-	*lst = new;
+	(*lst)->prev = new;
+	*lst = new;*/
+
+	if (*lst)
+	{
+		end = last(lst);
+		new->next = *lst;
+		(*lst)->prev = end;
+		*lst = new;
+	}
+	else
+		new->next = *lst;
+
 }
 
 void	data_delone(t_data *lst)
@@ -39,7 +55,18 @@ void	data_delone(t_data *lst)
 	free (lst);
 }
 
-void	merge(t_data *stack_a, t_data *stack_b)
+t_data	*last(t_data **lst)
+{
+	while (*lst)
+	{
+		if (lst->next == NULL)
+			return (*lst);
+		lst = lst->next;
+	}
+	return (NULL);
+}
+
+/*void	merge(t_data *stack_a, t_data *stack_b)
 {
 	t_data	*a_head;
 	t_data	*b_head;
@@ -58,7 +85,7 @@ void	merge(t_data *stack_a, t_data *stack_b)
 		b_head = b_next;
 	}
 	stack_b = b_head;
-}
+}*/
 
 void	data_clear(t_data **lst)
 {

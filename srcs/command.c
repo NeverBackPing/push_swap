@@ -32,9 +32,11 @@ int	sa(t_data **stack_a)
 
 	t_data	*head;
 	t_data	*last;
+	int		tmp;
 
 	head = *stack_a;
 	last = NULL;
+	tmp = 0;
 	if (head == NULL || head->next == NULL)
 		return (0);
 	while (head->next != NULL)
