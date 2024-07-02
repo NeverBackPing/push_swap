@@ -27,14 +27,16 @@ t_data	*mew_data(int content)
 
 void	add_data(t_data **lst, t_data *new)
 {
+	t_data	*end;
+
 	if (*lst)
 	{
-		new->next = *lst;
-		(*lst)->prev = new;
-		*lst = new;
+		end = last(*lst);
+		end->next = new;
+		new->prev = end;
 	}
 	else
-		new->next = *lst;
+		*lst = new;
 }
 
 void	data_delone(t_data *lst)
@@ -44,13 +46,18 @@ void	data_delone(t_data *lst)
 	free (lst);
 }
 
-t_data	*last(t_data **lst)
+t_data	*last(t_data *lst)
 {
-	while (*lst)
+	t_data	*tmp;
+
+	if (!lst)
+		return (NULL);
+	tmp = lst;
+	while (tmp)
 	{
-		if ((*lst)->next == NULL)
-			return (*lst);
-		lst = &(*lst)->next;
+		if (tmp->next == NULL)
+			return (tmp);
+		tmp = tmp->next;
 	}
 	return (NULL);
 }

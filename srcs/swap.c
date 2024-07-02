@@ -65,14 +65,12 @@ int	stack_sort(t_data **stack_a)
 int	main(int argc, char **argv)
 {
 	t_data	*stack_a;
-	t_data	*tmp;
-	t_data	*tmp2;
-	int	num; //
+	//t_data	*tmp;
+	//int	num; //
 
-	num = 0;//;
+	//num = 0;//;
 
-	tmp = NULL;
-	tmp2 = NULL;
+	//tmp = NULL;
 	stack_a = NULL;
 	if (argc == 1)
 		write(2, "Error\n", 6);
@@ -82,27 +80,26 @@ int	main(int argc, char **argv)
 			return (2);
 		if(stack_sort(&stack_a))
 			return (clear_stack(&stack_a), 0);
-		tmp = stack_a;
-		tmp2 = stack_a;
-		//view_data(stack_a);
+		//tmp = stack_a;
+		printf("Stack\n");
+		view_data(stack_a);
 		//road(&stack_a);
-		//view_data(stack_a);
-		ft_printf("\n");
-		//ft_printf("prev 5 = %p\n", tmp->prev);
-		while (tmp)
+		view_data(stack_a);
+		/*ft_printf("\n");
+		while (tmp && tmp->next !=  NULL)
 		{
 			num = tmp->content;
 		 	printf("stack_a = %d\n", num);
-			tmp = tmp->prev;
+			tmp = tmp->next;
 		}
+		printf("stack_a = %d\n", tmp->content);
 		ft_printf("\n");
-		while (tmp2)
+		while (tmp)
 		{
-			num = tmp2->content;
+			num = tmp->content;
 			printf("stack_a = %d\n", num);
-			tmp2 = tmp2->next;
-		}
-		//road()
+			tmp = tmp->prev;
+		}*/
 		clear_stack(&stack_a);
 	}
 	return (0);
