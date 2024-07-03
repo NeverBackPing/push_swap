@@ -29,43 +29,36 @@ int	lenstruct(t_data **stack)
 
 int	sa(t_data **stack_a)
 {
+	t_data	*first;
+	int		tmp;
 
-	t_data	*head;
-	t_data	*last;
-
-	head = *stack_a;
-	last = NULL;
-	if (head == NULL || head->next == NULL)
-		return (0);
-	while (head->next != NULL)
-	{
-		last = head;
-		head = head->next;
-	}
-	last->next = NULL;
-	head->next = *stack_a;
-	*stack_a = head;
-	return (1);
+	tmp = 0;
+	first = *stack_a;
+	if (first == NULL || first->next == NULL)
+		return (1);
+	tmp = first->content;
+	first->content = first->next->content;
+	first->next->content = tmp;
+	return (0);
 }
 
 int	rra(t_data **stack_a)
 {
-
 	t_data	*head;
 	t_data	*last;
+	int		tmp;
+	int		first;
 
-	head = NULL;
+	tmp = 0;
+	first = 0;
 	head = *stack_a;
-	last = NULL;
+	last = *stack_a;
+
 	if (head == NULL || head->next == NULL)
-		return (0);
-	while (head->next != NULL)
+		return (1);
+	while (last->next != NULL)
 	{
-		last = head;
-		head = head->next;
+
 	}
-	last->next = NULL;
-	head->next = *stack_a;
-	*stack_a = head;
-	return (1);
+	return (0);
 }

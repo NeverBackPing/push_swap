@@ -83,7 +83,7 @@ int	main(int argc, char **argv)
 		//tmp = stack_a;
 		printf("Stack\n");
 		view_data(stack_a);
-		//road(&stack_a);
+		rra(&stack_a);
 		view_data(stack_a);
 		/*ft_printf("\n");
 		while (tmp && tmp->next !=  NULL)
