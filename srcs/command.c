@@ -39,26 +39,40 @@ int	sa(t_data **stack_a)
 	tmp = first->content;
 	first->content = first->next->content;
 	first->next->content = tmp;
+	ft_printf("sa\n");
 	return (0);
 }
 
 int	rra(t_data **stack_a)
 {
+	int		tmp; //prev
+	int		lst; //next
+	t_data	*current;
 	t_data	*head;
-	t_data	*last;
-	int		tmp;
-	int		first;
 
 	tmp = 0;
-	first = 0;
+	lst = 0;
 	head = *stack_a;
-	last = *stack_a;
-
-	if (head == NULL || head->next == NULL)
+	current = *stack_a;
+	if (current == NULL || current->next == NULL)
 		return (1);
-	while (last->next != NULL)
+	tmp = current->content;
+	while (head)
 	{
-
+		if (head->next == NULL)
+			break ;
+		head = head->next;
+	}
+	lst = head->content;
+	current->content = lst;
+	current = current->next;
+	printf("content: %d\n", current->content);
+	while (current != NULL)
+	{
+		lst = current->content;
+		current->next->content = tmp;
+		current->content = lst;
+		current = current->next;
 	}
 	return (0);
 }
