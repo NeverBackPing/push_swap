@@ -20,10 +20,34 @@ void	view_data(t_data *stack_a)
 	ft_printf("Init a and b\n");
 	while (head  != NULL)
 	{
-		ft_printf("  %d\n", head->content);
+		ft_printf("  %d	\n", head->content);
 		head  = head->next;
 	}
-	if (head  == NULL)
+
+	if (head == NULL)
+	{
+		ft_printf(" -------------\n");
+		ft_printf("stack A  stack B\n");
+	}
+}
+
+void	view_data2(t_data *stack_a, t_data *stack_b)
+{
+	t_data	*head;
+	t_data	*head2;
+
+	head = stack_a;
+	head2 = stack_b;
+	ft_printf("Init a and b\n");
+	while (head  != NULL || head2 != NULL)
+	{
+		ft_printf("  %d	", head->content);
+		ft_printf("  %d	\n", head2->content);
+		head  = head->next;
+		if (head != NULL)
+			head2 = head2->next;
+	}
+	if (head == NULL)
 	{
 		ft_printf(" -------------\n");
 		ft_printf("stack A  stack B\n");
@@ -65,13 +89,10 @@ int	stack_sort(t_data **stack_a)
 int	main(int argc, char **argv)
 {
 	t_data	*stack_a;
-	//t_data	*tmp;
-	//int	num; //
+	t_data	*stack_b;
 
-	//num = 0;//;
-
-	//tmp = NULL;
 	stack_a = NULL;
+	stack_b = NULL;
 	if (argc == 1)
 		write(2, "Error\n", 6);
 	else
@@ -83,27 +104,10 @@ int	main(int argc, char **argv)
 		//tmp = stack_a;
 		printf("Stack\n");
 		view_data(stack_a);
-		rra(&stack_a);
-		view_data(stack_a);
-		/*ft_printf("\n");*/
-		while (tmp && tmp->next !=  NULL)
-		{
-			num = tmp->content;
-		 	printf("stack_a = %d\n", num);
-			tmp = tmp->next;
-		}
-
-		printf("stack_a = %d\n", tmp->content);
-		ft_printf("\n");
-		
-		while (tmp)
-		{
-			num = tmp->content;
-			printf("stack_a = %d\n", num);
-			tmp = tmp->prev;
-		}
-
+		pb(&stack_a, &stack_b);
+		view_data2(stack_a, stack_b);
 		clear_stack(&stack_a);
 	}
 	return (0);
 }
+

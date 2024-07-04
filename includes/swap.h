@@ -32,8 +32,10 @@ int		check_space(char *data, t_data **stack_a);
 int		check_format(char *str, int content, t_data **stack);
 //Command
 int		lenstruct(t_data **stack);
+void	pb(t_data **stack_a, t_data **stack_b);
 int		sa(t_data **stack_a);
-int		rra(t_data **stack_a);
+void	ra(t_data **stack_a);
+void	rra(t_data **stack_a);
 //Road
 void	road(t_data **stack_a/*, t_data *satck_b, char *str*/);
 void	sort(t_data **stack_a);
@@ -54,5 +56,6 @@ int		single_data(char *data);
 int		doublon(t_data **s, int c);
 int		array_data(t_data **stack_a);
 //Swap
+void	clear_stack(t_data **stack_a);
 int		stack_sort(t_data **stack_a);
 #endif

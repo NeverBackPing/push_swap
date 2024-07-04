@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   command.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sjossain <sjossain@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/17 17:59:01 by sjossain          #+#    #+#             */
-/*   Updated: 2024/06/28 15:20:55 by sjossain         ###   ########.fr       */
-/*                                                                            */
+/*	*/
+/*	:::	  ::::::::   */
+/*   command.c	  :+:	  :+:	:+:   */
+/*	+:+ +:+	 +:+	 */
+/*   By: sjossain <sjossain@student.42.fr>	  +#+  +:+	   +#+	*/
+/*	+#+#+#+#+#+   +#+	   */
+/*   Created: 2024/06/17 17:59:01 by sjossain	  #+#	#+#	 */
+/*   Updated: 2024/06/28 15:20:55 by sjossain	 ###   ########.fr	   */
+/*	*/
 /* ************************************************************************** */
 
 #include "../includes/swap.h"
@@ -43,36 +43,76 @@ int	sa(t_data **stack_a)
 	return (0);
 }
 
-int	rra(t_data **stack_a)
+void	ra(t_data **stack_a)
 {
-	int		tmp; //prev
-	int		lst; //next
+	int		tmp;
+	int		lst;
+	t_data	*current;
+
+	current = *stack_a;
+	if (current == NULL || current->next == NULL)
+		return;
+	lst = current->content;
+	while (current->next != NULL)
+	{
+		tmp = current->next->content;
+		current->content = tmp;
+		current = current->next;
+	}
+	current->content = lst;
+	ft_printf("ra\n");
+}
+
+
+void push(t_data **stack, t_data *node)
+{
+	if (*stack)
+	{
+		node->next = *stack;
+		(*stack)->prev = node;
+	}
+	*stack = node;
+}
+
+
+void	pb(t_data **stack_a, t_data **stack_b)
+{
+	t_data	*a;
+	//t_data	*b;
+	t_data	*element;
+
+	a = *stack_a;
+	if (a == NULL)
+		return;
+	printf("contene : %d\n", a->content);
+	element = mew_data(a->content);
+	add_data(stack_b, element);
+	data_delone(a);
+	ft_printf("pb\n");
+}
+
+void	rra(t_data **stack_a)
+{
+	int		tmp;
+	int		lst;
 	t_data	*current;
 	t_data	*head;
 
-	tmp = 0;
-	lst = 0;
 	head = *stack_a;
 	current = *stack_a;
 	if (current == NULL || current->next == NULL)
-		return (1);
+		return;
 	tmp = current->content;
-	while (head)
-	{
-		if (head->next == NULL)
-			break ;
-		head = head->next;
-	}
+	head = last(head);
 	lst = head->content;
 	current->content = lst;
 	current = current->next;
-	printf("content: %d\n", current->content);
 	while (current != NULL)
 	{
-		lst = current->content;
-		current->next->content = tmp;
+		lst = tmp;
+		tmp = current->content;
 		current->content = lst;
 		current = current->next;
 	}
-	return (0);
+	ft_printf("rra\n");
 }
