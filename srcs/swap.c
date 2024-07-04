@@ -85,21 +85,24 @@ int	main(int argc, char **argv)
 		view_data(stack_a);
 		//road(&stack_a);
 		view_data(stack_a);
-		/*ft_printf("\n");
+		/*ft_printf("\n");*/
 		while (tmp && tmp->next !=  NULL)
 		{
 			num = tmp->content;
 		 	printf("stack_a = %d\n", num);
 			tmp = tmp->next;
 		}
+
 		printf("stack_a = %d\n", tmp->content);
 		ft_printf("\n");
+		
 		while (tmp)
 		{
 			num = tmp->content;
 			printf("stack_a = %d\n", num);
 			tmp = tmp->prev;
-		}*/
+		}
+
 		clear_stack(&stack_a);
 	}
 	return (0);
