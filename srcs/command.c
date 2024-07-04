@@ -29,43 +29,50 @@ int	lenstruct(t_data **stack)
 
 int	sa(t_data **stack_a)
 {
+	t_data	*first;
+	int		tmp;
 
-	t_data	*head;
-	t_data	*last;
-
-	head = *stack_a;
-	last = NULL;
-	if (head == NULL || head->next == NULL)
-		return (0);
-	while (head->next != NULL)
-	{
-		last = head;
-		head = head->next;
-	}
-	last->next = NULL;
-	head->next = *stack_a;
-	*stack_a = head;
-	return (1);
+	tmp = 0;
+	first = *stack_a;
+	if (first == NULL || first->next == NULL)
+		return (1);
+	tmp = first->content;
+	first->content = first->next->content;
+	first->next->content = tmp;
+	ft_printf("sa\n");
+	return (0);
 }
 
 int	rra(t_data **stack_a)
 {
-
+	int		tmp; //prev
+	int		lst; //next
+	t_data	*current;
 	t_data	*head;
-	t_data	*last;
 
-	head = NULL;
+	tmp = 0;
+	lst = 0;
 	head = *stack_a;
-	last = NULL;
-	if (head == NULL || head->next == NULL)
-		return (0);
-	while (head->next != NULL)
+	current = *stack_a;
+	if (current == NULL || current->next == NULL)
+		return (1);
+	tmp = current->content;
+	while (head)
 	{
-		last = head;
+		if (head->next == NULL)
+			break ;
 		head = head->next;
 	}
-	last->next = NULL;
-	head->next = *stack_a;
-	*stack_a = head;
-	return (1);
+	lst = head->content;
+	current->content = lst;
+	current = current->next;
+	printf("content: %d\n", current->content);
+	while (current != NULL)
+	{
+		lst = current->content;
+		current->next->content = tmp;
+		current->content = lst;
+		current = current->next;
+	}
+	return (0);
 }
