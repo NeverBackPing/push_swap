@@ -64,30 +64,32 @@ void	ra(t_data **stack_a)
 }
 
 
-void push(t_data **stack, t_data *node)
+void push(t_data **stack, t_data *stack_a)
 {
-	if (*stack)
-	{
-		node->next = *stack;
-		(*stack)->prev = node;
-	}
-	*stack = node;
+
+	(*stack) = stack_a;
 }
 
+t_data	*pop(t_data **stack_a)
+{
+	t_data	*tmp;
+
+	if (*stack_a == NULL)
+		return (0);
+	tmp = *stack_a;
+	(*stack_a) = tmp->next;
+	return ((*stack_a));
+}
 
 void	pb(t_data **stack_a, t_data **stack_b)
 {
 	t_data	*a;
-	//t_data	*b;
-	t_data	*element;
 
 	a = *stack_a;
 	if (a == NULL)
 		return;
-	printf("contene : %d\n", a->content);
-	element = mew_data(a->content);
-	add_data(stack_b, element);
-	data_delone(a);
+	push(stack_b, a->content);
+	(*stack_a) = pop(stack_a);
 	ft_printf("pb\n");
 }
 

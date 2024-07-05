@@ -35,14 +35,18 @@ void	view_data2(t_data *stack_a, t_data *stack_b)
 {
 	t_data	*head;
 	t_data	*head2;
+	int		j;
+	int		i;
 
 	head = stack_a;
 	head2 = stack_b;
-	ft_printf("Init a and b\n");
+	//ft_printf("Init a and b\n");
 	while (head  != NULL || head2 != NULL)
 	{
-		ft_printf("  %d	", head->content);
-		ft_printf("  %d	\n", head2->content);
+		j =  head->content;
+		i =  head2->content;
+		printf("  %d	", head->content);
+		printf("  %d	\n", head2->content);
 		head  = head->next;
 		if (head != NULL)
 			head2 = head2->next;

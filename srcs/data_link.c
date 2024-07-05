@@ -29,6 +29,7 @@ void	add_data(t_data **lst, t_data *new)
 {
 	t_data	*end;
 
+	end = NULL;
 	if (*lst)
 	{
 		end = last(*lst);
@@ -36,7 +37,11 @@ void	add_data(t_data **lst, t_data *new)
 		new->prev = end;
 	}
 	else
+	{
 		*lst = new;
+		new->prev = end;
+	}
+
 }
 
 void	data_delone(t_data *lst)
