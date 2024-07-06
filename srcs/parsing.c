@@ -66,6 +66,8 @@ int	check_pars(char *str, int check, t_data **stack_a)
 	{
 		data = ft_atol(str);
 		data_a = mew_data(data);
+		if (data_a == NULL)
+			return (1);
 		add_data(stack_a, data_a);
 	}
 	return (0);

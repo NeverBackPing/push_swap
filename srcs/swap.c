@@ -119,9 +119,10 @@ int	main(int argc, char **argv)
 		pb(&stack_a, &stack_b);
 		pb(&stack_a, &stack_b);
 		pb(&stack_a, &stack_b);
-		pa(&stack_, &stack_b);
+		pa(&stack_a, &stack_b);
 		pb(&stack_a, &stack_b);
 		pb(&stack_a, &stack_b);
+		pa(&stack_b, &stack_a);
 		view_data2(stack_a, stack_b);
 		clear_stack(&stack_a, &stack_b);
 	}
