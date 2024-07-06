@@ -41,7 +41,6 @@ void	add_data(t_data **lst, t_data *new)
 		*lst = new;
 		new->prev = end;
 	}
-
 }
 
 void	data_delone(t_data *lst)

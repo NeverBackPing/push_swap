@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   command.c                                          :+:      :+:    :+:   */
+/*   command_part2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sjossain <sjossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,44 +12,29 @@
 
 #include "../includes/swap.h"
 
-int	lenstruct(t_data **stack)
-{
-	int		len;
-	t_data	*head;
-
-	len = 0;
-	head = *stack;
-	while (head)
-	{
-		len++;
-		head = head->next;
-	}
-	return (len);
-}
-
-int	sa(t_data **stack_a)
+int	sb(t_data **stack_b)
 {
 	t_data	*first;
 	int		tmp;
 
 	tmp = 0;
-	first = *stack_a;
+	first = *stack_b;
 	if (first == NULL || first->next == NULL)
 		return (1);
 	tmp = first->content;
 	first->content = first->next->content;
 	first->next->content = tmp;
-	ft_printf("sa\n");
+	ft_printf("sb\n");
 	return (0);
 }
 
-void	ra(t_data **stack_a)
+void	rb(t_data **stack_b)
 {
 	int		tmp;
 	int		lst;
 	t_data	*current;
 
-	current = *stack_a;
+	current = *stack_b;
 	if (current == NULL || current->next == NULL)
 		return ;
 	lst = current->content;
@@ -60,29 +45,29 @@ void	ra(t_data **stack_a)
 		current = current->next;
 	}
 	current->content = lst;
-	ft_printf("ra\n");
+	ft_printf("rb\n");
 }
 
-void	pb(t_data **stack_a, t_data **stack_b)
+void	pa(t_data **stack_b, t_data **stack_a)
 {
-	t_data	**a;
+	t_data	**b;
 
-	if (!stack_a ||!(*stack_a))
+	if (!stack_b || !(*stack_b))
 		return ;
-	a = stack_a;
-	push(stack_b, a);
-	ft_printf("pb\n");
+	b = stack_b;
+	push(stack_a, b);
+	ft_printf("pa\n");
 }
 
-void	rra(t_data **stack_a)
+void	rrb(t_data **stack_b)
 {
 	int		tmp;
 	int		lst;
 	t_data	*current;
 	t_data	*head;
 
-	head = *stack_a;
-	current = *stack_a;
+	head = *stack_b;
+	current = *stack_b;
 	if (current == NULL || current->next == NULL)
 		return ;
 	tmp = current->content;
@@ -97,5 +82,5 @@ void	rra(t_data **stack_a)
 		current->content = lst;
 		current = current->next;
 	}
-	ft_printf("rra\n");
+	ft_printf("rrb\n");
 }

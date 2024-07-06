@@ -36,8 +36,16 @@ void	pb(t_data **stack_a, t_data **stack_b);
 int		sa(t_data **stack_a);
 void	ra(t_data **stack_a);
 void	rra(t_data **stack_a);
+//Command part2
+void	pa(t_data **stack_b, t_data **stack_a);
+void	rb(t_data **stack_b);
+int		sb(t_data **stack_b);
+void	rrb(t_data **stack_b);
+//Command utile
+void	pop(t_data **stack);
+void	push(t_data **stack, t_data **head);
 //Road
-void	road(t_data **stack_a/*, t_data *satck_b, char *str*/);
+void	road(t_data **stack_a, t_data *satck_b, char *str);
 void	sort(t_data **stack_a);
 //Data structure
 t_data	*mew_data(int content);
@@ -56,6 +64,6 @@ int		single_data(char *data);
 int		doublon(t_data **s, int c);
 int		array_data(t_data **stack_a);
 //Swap
-void	clear_stack(t_data **stack_a);
+void	clear_stack(t_data **stack_a, t_data **stack_b);
 int		stack_sort(t_data **stack_a);
 #endif

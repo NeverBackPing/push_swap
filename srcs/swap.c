@@ -17,17 +17,20 @@ void	view_data(t_data *stack_a)
 	t_data	*head;
 
 	head = stack_a;
-	ft_printf("Init a and b\n");
+	printf(" -------------");
+	printf("\nInit a and b\n");
+	printf(" -------------\n");
 	while (head  != NULL)
 	{
-		ft_printf("  %d	\n", head->content);
+		printf("  %d	\n", head->content);
 		head  = head->next;
 	}
 
 	if (head == NULL)
 	{
-		ft_printf(" -------------\n");
-		ft_printf("stack A  stack B\n");
+		printf(" -------------\n");
+		printf("stack A  stack B\n");
+		printf(" -------------\n\n");
 	}
 }
 
@@ -35,33 +38,39 @@ void	view_data2(t_data *stack_a, t_data *stack_b)
 {
 	t_data	*head;
 	t_data	*head2;
-	int		j;
 	int		i;
 
+	i = 0;
 	head = stack_a;
 	head2 = stack_b;
-	//ft_printf("Init a and b\n");
-	while (head  != NULL || head2 != NULL)
+	printf("\n-------------\n");
+	printf(" short stack\n");
+	printf("-------------\n");
+	printf("Stack A: ");
+	while (head)
 	{
-		j =  head->content;
+		i =  head->content;
+		printf(" %d ", i);
+		head = head->next;
+	}
+	i = 0;
+	printf("\nStack B: ");
+	while (head2)
+	{
 		i =  head2->content;
-		printf("  %d	", head->content);
-		printf("  %d	\n", head2->content);
-		head  = head->next;
-		if (head != NULL)
-			head2 = head2->next;
+		printf(" %d ", i);
+		head2 = head2->next;
 	}
-	if (head == NULL)
-	{
-		ft_printf(" -------------\n");
-		ft_printf("stack A  stack B\n");
-	}
+	printf("\n---------------------\n");
 }
 
-void	clear_stack(t_data **stack_a)
+void	clear_stack(t_data **stack_a, t_data **stack_b)
 {
-	data_clear(stack_a);
-	ft_printf("Clear\n");
+	if (stack_a)
+		data_clear(stack_a);
+	if (stack_b)
+		data_clear(stack_b);
+	printf("\nClear\n\n");
 }
 
 int	stack_sort(t_data **stack_a)
@@ -104,13 +113,17 @@ int	main(int argc, char **argv)
 		if (init_stack(argv, &stack_a))
 			return (2);
 		if(stack_sort(&stack_a))
-			return (clear_stack(&stack_a), 0);
-		//tmp = stack_a;
-		printf("Stack\n");
+			return (clear_stack(&stack_a, &stack_b), 0);
 		view_data(stack_a);
 		pb(&stack_a, &stack_b);
+		pb(&stack_a, &stack_b);
+		pb(&stack_a, &stack_b);
+		pb(&stack_a, &stack_b);
+		pa(&stack_, &stack_b);
+		pb(&stack_a, &stack_b);
+		pb(&stack_a, &stack_b);
 		view_data2(stack_a, stack_b);
-		clear_stack(&stack_a);
+		clear_stack(&stack_a, &stack_b);
 	}
 	return (0);
 }
