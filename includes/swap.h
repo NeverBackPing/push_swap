@@ -44,6 +44,9 @@ void	rrb(t_data **stack_b);
 //Command utile
 void	pop(t_data **stack);
 void	push(t_data **stack, t_data **head);
+void	ss(t_data **stack_a, t_data **stack_b);
+void	rr(t_data **stack_a, t_data **stack_b);
+void	rrr(t_data **stack_a, t_data **stack_b);
 //Road
 void	road(t_data **stack_a, t_data *satck_b, char *str);
 void	sort(t_data **stack_a);

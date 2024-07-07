@@ -31,3 +31,21 @@ void	push(t_data **stack, t_data **head)
 	*stack = tmp;
 	(*stack)->prev = NULL;
 }
+
+void	ss(t_data **stack_a, t_data **stack_b)
+{
+	sa(stack_a);
+	sb(stack_b);
+}
+
+void	rr(t_data **stack_a, t_data **stack_b)
+{
+	ra(stack_a);
+	rb(stack_b);
+}
+
+void	rrr(t_data **stack_a, t_data **stack_b)
+{
+	rra(stack_a);
+	rrb(stack_b);
+}

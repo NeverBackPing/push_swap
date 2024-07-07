@@ -31,7 +31,7 @@ int	ft_digit_array(char *str)
 		return (1);
 	while (str[i] != '\0')
 	{
-		if (!(str[i] >= 48 && str[i] <= 57))
+		if (str[i] == 46 || str[i] == 44)
 			return (1);
 		i++;
 	}

@@ -67,7 +67,7 @@ void	pb(t_data **stack_a, t_data **stack_b)
 {
 	t_data	**a;
 
-	if (!stack_a ||!(*stack_a))
+	if (!stack_a || !(*stack_a))
 		return ;
 	a = stack_a;
 	push(stack_b, a);

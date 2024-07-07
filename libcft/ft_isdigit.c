@@ -43,12 +43,7 @@ int	check(int first, int second, int digit, char *str)
 int	check_part2(int first, int digit)
 {
 	if ((first == 45 || first == 43) && (digit >= 48 && digit <= 57))
-	{
-		if (first == 45 && digit == 48)
-			return (1);
-		else
-			return (0);
-	}
+		return (0);
 	else
 		return (0);
 }
