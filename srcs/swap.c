@@ -103,7 +103,10 @@ int	main(int argc, char **argv)
 {
 	t_data	*stack_a;
 	t_data	*stack_b;
+	int		tab;
+	int		i;
 
+	tab = 0;
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc == 1)
@@ -115,14 +118,16 @@ int	main(int argc, char **argv)
 		if(stack_sort(&stack_a))
 			return (clear_stack(&stack_a, &stack_b), 0);
 		view_data(stack_a);
-		pb(&stack_a, &stack_b);
+
+		i = array(&stack_a);
+		printf("index: %d \n", i);
+		/*pb(&stack_a, &stack_b);
 		pb(&stack_a, &stack_b);
 		pb(&stack_a, &stack_b);
 		pb(&stack_a, &stack_b);
 		ss(&stack_a, &stack_b);
-		view_data2(stack_a, stack_b);
+		view_data2(stack_a, stack_b);*/
 		clear_stack(&stack_a, &stack_b);
 	}
 	return (0);
 }
-
