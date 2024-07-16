@@ -24,12 +24,9 @@ typedef struct t_datatruct
 	struct t_datatruct	*next;
 	struct t_datatruct	*prev;
 }	t_data;
-//Array
-int		array(t_data **stack);
-int		array_index(int *tab, int len);
-size_t	len_array(int tab);
-void	sort_array(int tab, int *array);
-void	swap_array(int* a, int* b);
+//Sort
+int		init_sort(t_data **stack_a, t_data **stack_b);
+void	start(t_data **stack_a, t_data **stack_b);
 //Checker
 int		check_data(char *data);
 int		check_init(char *data, t_data **stack_a);
