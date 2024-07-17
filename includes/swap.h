@@ -25,7 +25,8 @@ typedef struct t_datatruct
 	struct t_datatruct	*prev;
 }	t_data;
 //Sort
-int		init_sort(t_data **stack_a, t_data **stack_b);
+int		check_cost(t_data **stack, t_data **another);
+void	init_sort(t_data **stack_a, t_data **stack_b);
 void	start(t_data **stack_a, t_data **stack_b);
 //Checker
 int		check_data(char *data);
