@@ -12,54 +12,74 @@
 
 #include "../includes/swap.h"
 
+int	small_value(t_data **stack)
+{
+	int		small;
+	t_data	*tmp;
+
+	small = 0;
+	tmp = *stack;
+	if (tmp)
+		small = tmp->content;
+	tmp = tmp->next;
+	while (tmp != NULL)
+	{
+		if (small > tmp->content && tmp != NULL)
+			small = tmp->content;
+		tmp = tmp->next;
+	}
+	return (small);
+}
+
+int	great_value(t_data **stack)
+{
+	int		great;
+	t_data	*tmp;
+
+	great = 0;
+	tmp = *stack;
+	if (tmp)
+		great = tmp->content;
+	tmp = tmp->next;
+	while (tmp != NULL)
+	{
+		if (great < tmp->content && tmp != NULL)
+			great = tmp->content;
+		tmp = tmp->next;
+	}
+	return (great);
+}
+
+
 int	check_cost(t_data **stack, t_data **another)
 {
 	t_data	*tmp;
 	t_data	*tmp2;
 	int		check;
-	t_data	*end;
+	//t_data	*end;
 
 	check = 0;
-	end = 0;
+	//end = 0;
 	tmp = *stack;
 	tmp2 = *another;
-	end = last(tmp);
-	if (tmp->content > tmp2->content)
+	//end = last(tmp);
+	if (tmp->content > great_value(another))
 	{
-		printf("bonjour\n");
-		printf("----------\n");
-
-		printf("\nnext->content: %d\n", tmp2->next->content );
-		printf("\ncontent: %d\n", tmp2->content );
 		check++;
-		if (tmp2->content > tmp2->next->content)
+		if (tmp2->content != great_value(another) && tmp->content != small_value(stack))
 			check++;
-		else
-		{
-			printf("bonjour\n");
-			check++;
-			check++;
-		}
 	}
 	else
 	{
-		printf("hello\n");
-		printf("----------\n");
-		printf("\nnext->content: %d\n", tmp->next->content );
-		printf("\ncontent: %d\n", tmp->content );
 		check++;
-		printf("\ncontent LAST: %d\n", end->content );
-		if (tmp->content > end->content)
+		if (tmp->content < small_value(another))
 			check++;
 		else
 		{
-			if (tmp->content < tmp2->next->content)
-				check++;
 			check++;
-			check++;
+			//if (tmp->content)
 		}
 	}
-	printf("cost: %d\n", check);
 	return (check);
 }
 
@@ -73,33 +93,37 @@ void	init_sort(t_data **stack_a, t_data **stack_b)
 {
 	int		cost;
 
-	start(stack_a, stack_b);
 	cost = 0;
-
+	start(stack_a, stack_b);
 	cost = check_cost(stack_a, stack_b);
+	printf("\ncost: %d\n", cost);
 	if ((*stack_a)->content > (*stack_b)->content && cost == 2)
-		pb(stack_a, stack_b);
-	cost = check_cost(stack_a, stack_b);
-	if ((*stack_a)->content < (*stack_b)->content && cost == 2)
 	{
-		pb(stack_a, stack_b);
 		rb(stack_b);
-	}
-	cost = check_cost(stack_a, stack_b);
-	if ((*stack_a)->content > (*stack_b)->content && cost == 4)
-	{
-		ra(stack_a);
-	}
-	cost = check_cost(stack_a, stack_b);
-	if ((*stack_a)->content < (*stack_b)->content && cost == 4)
-	{
-		pb(stack_a, stack_b);
-		sb(stack_b);
-		pa(stack_b, stack_a);
-		sb(stack_b);
 		pb(stack_a, stack_b);
 	}
+	cost = check_cost(stack_a, stack_b);
+	printf("\ncost 2: %d\n", cost);
+	if ((*stack_a)->content < small_value(stack_b) && cost == 2)
+	{
+		pb(stack_a, stack_b);
+		if ((*stack_a)->content == great_value(stack_a))
+			rr(stack_a, stack_b);
+		else
+			rb(stack_b);
 
+	}
+	cost = check_cost(stack_a, stack_b);
+	printf("\ncost 3: %d\n", cost);
+	if ((*stack_a)->content < small_value(stack_b) && cost == 2)
+	{
+		pb(stack_a, stack_b);
+		if ((*stack_a)->content == great_value(stack_a))
+			rr(stack_a, stack_b);
+		else
+			rb(stack_b);
+
+	}
 	/*while (stack_b)
 	{
 
