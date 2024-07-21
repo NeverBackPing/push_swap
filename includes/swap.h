@@ -14,6 +14,7 @@
 # define SWAP_H
 
 # include <stdio.h>
+# include <stdbool.h>
 # include <limits.h>
 # include "libft.h"
 # include "ft_printf.h"
@@ -21,15 +22,27 @@
 typedef struct t_datatruct
 {
 	int					content;
+	int					position;
+	int					cost;
+	bool				up_med;
+	bool				blow;
+	struct t_datatruct	*rule;
 	struct t_datatruct	*next;
 	struct t_datatruct	*prev;
 }	t_data;
 //Sort
-int		check_cost(t_data **stack, t_data **another);
+void	short_values(t_data **stack_a);
+int		check_cost(t_data *stack, t_data *another);
 int		great_value(t_data **stack);
 void	init_sort(t_data **stack_a, t_data **stack_b);
 int		small_value(t_data **stack);
 void	start(t_data **stack_a, t_data **stack_b);
+//Sort part 2
+void	set_node_a(t_data *stack_a, t_data *stack_b);
+void	set_node_b(t_data *stack_a, t_data *stack_b);
+void	current_index(t_data *stack);
+static void set_objective(t_data *stack_a, t_data *stack_b)
+//Sort part 3
 //Checker
 int		check_data(char *data);
 int		check_init(char *data, t_data **stack_a);

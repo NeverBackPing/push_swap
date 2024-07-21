@@ -51,81 +51,71 @@ int	great_value(t_data **stack)
 }
 
 
-int	check_cost(t_data **stack, t_data **another)
+int	check_cost(t_data *stack, t_data *another)
 {
-	t_data	*tmp;
-	t_data	*tmp2;
-	int		check;
-	//t_data	*end;
+	int	len_stack;
+	int	len_another;
 
-	check = 0;
-	//end = 0;
-	tmp = *stack;
-	tmp2 = *another;
-	//end = last(tmp);
-	if (tmp->content > great_value(another))
+	len_stack = lenstruct(stack);
+	len_another = lenstruct(another);
+	while (stack)
 	{
-		check++;
-		if (tmp2->content != great_value(another) && tmp->content != small_value(stack))
-			check++;
-	}
-	else
-	{
-		check++;
-		if (tmp->content < small_value(another))
-			check++;
+		stack->cost = index;
+		if (!(stack->up_med))
+			stack->cost = len_stack - (stack->position);
+		if (stack->rule->up_med)
+			stack->cost += stack->rule->position;
 		else
-		{
-			check++;
-			//if (tmp->content)
-		}
+			stack->cost += len_another - (stack->rule->position);
+		stack = stack->next;
 	}
-	return (check);
 }
 
 void	start(t_data **stack_a, t_data **stack_b)
 {
+	int		len_stack;
+
 	pb(stack_a, stack_b);
-	pb(stack_a, stack_b);
+	if (stack_sort(stack_a) == 0)
+		pb(stack_a, stack_b);
+	len_stack = lenstruct(stack_a);
+	while (len_stack-- > 3 && stack_sort(stack_a) == 0)
+	{
+		set_node_a((*stack_a), (*stack_b));
+		pb(stack_a, stack_b);
+	}
+	short_values(stack_a);
+	while (len_stack-- > 3 && stack_sort(stack_a) == 0)
+	{
+		set_node_b((*stack_b), (*stack_a));
+		pa(stack_a, stack_b);
+	}
+}
+
+void	short_values(t_data **stack_a)
+{
+	int	great;
+
+	great = great_value(stack_a);
+	if ((*stack_a)->content == great)
+		ra(stack_a);
+	else if ((*stack_a)->next->content == great)
+		rra(stack_a);
+	if ((*stack_a)->content > (*stack_a)->next->content)
+		sa(stack_a);
 }
 
 void	init_sort(t_data **stack_a, t_data **stack_b)
 {
 	int		cost;
+	int		len_stack;
 
 	cost = 0;
-	start(stack_a, stack_b);
-	cost = check_cost(stack_a, stack_b);
-	printf("\ncost: %d\n", cost);
-	if ((*stack_a)->content > (*stack_b)->content && cost == 2)
-	{
-		rb(stack_b);
-		pb(stack_a, stack_b);
-	}
-	cost = check_cost(stack_a, stack_b);
-	printf("\ncost 2: %d\n", cost);
-	if ((*stack_a)->content < small_value(stack_b) && cost == 2)
-	{
-		pb(stack_a, stack_b);
-		if ((*stack_a)->content == great_value(stack_a))
-			rr(stack_a, stack_b);
-		else
-			rb(stack_b);
-
-	}
-	cost = check_cost(stack_a, stack_b);
-	printf("\ncost 3: %d\n", cost);
-	if ((*stack_a)->content < small_value(stack_b) && cost == 2)
-	{
-		pb(stack_a, stack_b);
-		if ((*stack_a)->content == great_value(stack_a))
-			rr(stack_a, stack_b);
-		else
-			rb(stack_b);
-
-	}
-	/*while (stack_b)
-	{
-
-	}*/
+	len_stack = lenstruct(stack_a);
+	if (len_stack == 2)
+		sa(stack_a);
+	else if (len_stack == 3)
+		short_values(stack_a);
+	else
+		start(stack_a, stack_b);
 }
