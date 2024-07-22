@@ -12,83 +12,37 @@
 
 #include "../includes/swap.h"
 
-int	small_value(t_data **stack)
+void	small_on_top(t_data **stack)
 {
-	int		small;
-	t_data	*tmp;
-
-	small = 0;
-	tmp = *stack;
-	if (tmp)
-		small = tmp->content;
-	tmp = tmp->next;
-	while (tmp != NULL)
+	while ((*stack) != small_value(stack))
 	{
-		if (small > tmp->content && tmp != NULL)
-			small = tmp->content;
-		tmp = tmp->next;
+		if ((*stack)->up_med)
+			ra(stack);
+		else
+			rra(stack);
 	}
-	return (small);
 }
 
-int	great_value(t_data **stack)
+void	current_index(t_data *stack)
 {
-	int		great;
-	t_data	*tmp;
+	int	i;
+	int	median;
+	int	length;
 
-	great = 0;
-	tmp = *stack;
-	if (tmp)
-		great = tmp->content;
-	tmp = tmp->next;
-	while (tmp != NULL)
-	{
-		if (great < tmp->content && tmp != NULL)
-			great = tmp->content;
-		tmp = tmp->next;
-	}
-	return (great);
-}
-
-
-int	check_cost(t_data *stack, t_data *another)
-{
-	int	len_stack;
-	int	len_another;
-
-	len_stack = lenstruct(stack);
-	len_another = lenstruct(another);
+	i = 0;
+	if (!stack)
+		return;
+	length = lenstruct(&stack);
+	median = length / 2;
 	while (stack)
 	{
-		stack->cost = index;
-		if (!(stack->up_med))
-			stack->cost = len_stack - (stack->position);
-		if (stack->rule->up_med)
-			stack->cost += stack->rule->position;
+		stack->position = i;
+		if (i <= median)
+			stack->up_med = true;
 		else
-			stack->cost += len_another - (stack->rule->position);
+			stack->up_med = false;
 		stack = stack->next;
-	}
-}
-
-void	start(t_data **stack_a, t_data **stack_b)
-{
-	int		len_stack;
-
-	pb(stack_a, stack_b);
-	if (stack_sort(stack_a) == 0)
-		pb(stack_a, stack_b);
-	len_stack = lenstruct(stack_a);
-	while (len_stack-- > 3 && stack_sort(stack_a) == 0)
-	{
-		set_node_a((*stack_a), (*stack_b));
-		pb(stack_a, stack_b);
-	}
-	short_values(stack_a);
-	while (len_stack-- > 3 && stack_sort(stack_a) == 0)
-	{
-		set_node_b((*stack_b), (*stack_a));
-		pa(stack_a, stack_b);
+		++i;
 	}
 }
 
@@ -107,10 +61,8 @@ void	short_values(t_data **stack_a)
 
 void	init_sort(t_data **stack_a, t_data **stack_b)
 {
-	int		cost;
 	int		len_stack;
 
-	cost = 0;
 	len_stack = lenstruct(stack_a);
 	if (len_stack == 2)
 		sa(stack_a);

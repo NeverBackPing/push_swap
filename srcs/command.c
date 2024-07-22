@@ -60,7 +60,7 @@ void	ra(t_data **stack_a)
 		current = current->next;
 	}
 	current->content = lst;
-	ft_printf("ra\n");
+	//ft_printf("ra\n");
 }
 
 void	pb(t_data **stack_a, t_data **stack_b)
@@ -97,5 +97,5 @@ void	rra(t_data **stack_a)
 		current->content = lst;
 		current = current->next;
 	}
-	ft_printf("rra\n");
+	//ft_printf("rra\n");
 }
