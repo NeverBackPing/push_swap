@@ -32,9 +32,8 @@ typedef struct t_datatruct
 }	t_data;
 //Sort
 void		init_sort(t_data **stack_a, t_data **stack_b);
-t_data		*small_value(t_data **stack);
+t_data		*small_value(t_data *stack);
 void		current_index(t_data *stack);
-void	small_on_top(t_data **stack);
 //Sort part 2
 void		set_node_a(t_data *stack_a, t_data *stack_b);
 void		set_node_b(t_data *stack_a, t_data *stack_b);
@@ -42,7 +41,7 @@ void		init_for_push(t_data **stack, t_data *head, char keys);
 //Sort part 3
 void		start(t_data **stack_a, t_data **stack_b);
 //Sort part 4
-t_data		*blow(t_data **stack);
+t_data		*blow(t_data *stack);
 int			great_value(t_data **stack);
 void		short_values(t_data **stack_a);
 //Checker

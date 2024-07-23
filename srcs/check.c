@@ -25,8 +25,16 @@ int	check_overflow(char *data)
 int	check_data(char *data)
 {
 	int	check;
+	int	i;
 
-	check = 0;
+	i = 0;
+	check = 0; // last modif pars
+	while (data[i++])
+		if (data[i] != ' ')
+			break;
+	if ((size_t)i == ft_strlen(data))
+		return (check = -1, check);
+	//
 	if (ft_isdigit(data) > -1)
 	{
 		if (ft_signe(data) < 1)

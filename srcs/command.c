@@ -18,6 +18,8 @@ int	lenstruct(t_data **stack)
 	t_data	*head;
 
 	len = 0;
+	if (!stack)
+		return (0);
 	head = *stack;
 	while (head)
 	{
@@ -60,7 +62,7 @@ void	ra(t_data **stack_a)
 		current = current->next;
 	}
 	current->content = lst;
-	//ft_printf("ra\n");
+	ft_printf("ra\n");
 }
 
 void	pb(t_data **stack_a, t_data **stack_b)

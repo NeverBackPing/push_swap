@@ -12,6 +12,7 @@
 
 #include "../includes/swap.h"
 
+
 static void set_objective_b(t_data *stack_a, t_data *stack_b)
 {
 	t_data	*tmp_a;
@@ -20,11 +21,11 @@ static void set_objective_b(t_data *stack_a, t_data *stack_b)
 
 	while(stack_b)
 	{
-		index = LONG_MIN;
+		index = LONG_MAX;
 		tmp_a = stack_a;
 		while (tmp_a)
 		{
-			if (tmp_a->content > stack_a->content
+			if (tmp_a->content > stack_b->content
 				&& tmp_a->content < index)
 			{
 				index = tmp_a->content;
@@ -33,33 +34,30 @@ static void set_objective_b(t_data *stack_a, t_data *stack_b)
 			tmp_a = tmp_a->next;
 		}
 		if (index == LONG_MAX)
-			stack_b->rule = small_value(&stack_a);
+			stack_b->rule = small_value(stack_a);
 		else
 			stack_b->rule = target_node;
 		stack_b = stack_b->next;
 	}
 }
 
-t_data	*small_value(t_data **stack)
+t_data	*small_value(t_data *stack)
 {
-	int		small;
-	t_data	*tmp;
+	long		small;
 	t_data	*small_value;
 
 	small = 0;
-	tmp = *stack;
-	small_value = tmp;
-	if (tmp)
-		small = tmp->content;
-	tmp = tmp->next;
-	while (tmp != NULL)
+	if (stack)
+		return (NULL);
+	small = LONG_MAX;
+	while (stack != NULL)
 	{
-		if (small > tmp->content && tmp != NULL)
+		if (small > stack->content)
 		{
-			small = tmp->content;
-			small_value = tmp;
+			small = stack->content;
+			small_value = stack;
 		}
-		tmp = tmp->next;
+		stack = stack->next;
 	}
 	return (small_value);
 }
@@ -83,27 +81,26 @@ int	great_value(t_data **stack)
 	return (great);
 }
 
-t_data	*blow(t_data **stack)
+t_data	*blow(t_data *stack)
 {
 	int i;
 
 	i = 0;
-	if (!stack || !*stack)
+	if (!stack)
 		return (NULL);
-	while (*stack)
+	while (stack)
 	{
-		i = (*stack)->content;
-		if((*stack)->blow)
-			return (*stack);
-		*stack = (*stack)->next;
+		i = stack->content;
+		if(stack->blow)
+			return (stack);
+		stack = stack->next;
 	}
-	printf("%i", i);
 	return (NULL);
 }
 
 void	set_node_b(t_data *stack_a, t_data *stack_b)
 {
 	current_index(stack_a);
-	current_index(stack_a);
+	current_index(stack_b);
 	set_objective_b(stack_a, stack_b);
 }

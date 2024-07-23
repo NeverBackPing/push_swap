@@ -12,17 +12,6 @@
 
 #include "../includes/swap.h"
 
-void	small_on_top(t_data **stack)
-{
-	while ((*stack) != small_value(stack))
-	{
-		if ((*stack)->up_med)
-			ra(stack);
-		else
-			rra(stack);
-	}
-}
-
 void	current_index(t_data *stack)
 {
 	int	i;

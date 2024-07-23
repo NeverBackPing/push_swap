@@ -45,7 +45,7 @@ void	rb(t_data **stack_b)
 		current = current->next;
 	}
 	current->content = lst;
-	//ft_printf("rb\n");
+	ft_printf("rb\n");
 }
 
 void	pa(t_data **stack_b, t_data **stack_a)
@@ -82,5 +82,5 @@ void	rrb(t_data **stack_b)
 		current->content = lst;
 		current = current->next;
 	}
-	//ft_printf("rrb\n");
+	ft_printf("rrb\n");
 }

@@ -6,7 +6,7 @@
 /*   By: sjossain <sjossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 13:31:12 by sjossain          #+#    #+#             */
-/*   Updated: 2024/07/22 05:15:43 by sjossain         ###   ########.fr       */
+/*   Updated: 2024/07/23 20:00:30 by sjossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,33 @@ static void	check_cost(t_data *stack, t_data *another)
 	}
 }
 
+t_data	*great(t_data *stack)
+{
+	long		great;
+	t_data	*great_value;
+
+	if (stack)
+		return (NULL);
+	great = LONG_MIN;
+	while (stack != NULL)
+	{
+		if (great < stack->content)
+		{
+			great = stack->content;
+			great_value = stack;
+		}
+		stack = stack->next;
+	}
+	return (great_value);
+}
+
 static void set_objective(t_data *stack_a, t_data *stack_b)
 {
 	t_data	*tmp_b;
 	t_data	*target_node;
 	long	index;
 
+	index = 0;
 	while(stack_a)
 	{
 		index = LONG_MIN;
@@ -51,8 +72,8 @@ static void set_objective(t_data *stack_a, t_data *stack_b)
 			}
 			tmp_b = tmp_b->next;
 		}
-		if (index == LONG_MAX)
-			stack_a->rule = small_value(&stack_b);
+		if (index == LONG_MIN)
+			stack_a->rule = great(stack_b);
 		else
 			stack_a->rule = target_node;
 		stack_a = stack_a->next;
@@ -103,10 +124,8 @@ void	set_blow(t_data *stack)
 void	set_node_a(t_data *stack_a, t_data *stack_b)
 {
 	current_index(stack_a);
-	current_index(stack_a);
+	current_index(stack_b);
 	set_objective(stack_a, stack_b);
 	check_cost(stack_a, stack_b);
 	set_blow(stack_a);
 }
-
-
