@@ -115,7 +115,8 @@ int	main(int argc, char **argv)
 		if(stack_sort(&stack_a))
 			return (clear_stack(&stack_a, &stack_b), 0);
 		view_data(stack_a);
-		init_sort(&stack_a, &stack_b);
+		if(init_sort(&stack_a, &stack_b))
+			return (clear_stack(&stack_a, &stack_b), 0);
 		/*pb(&stack_a, &stack_b);
 		pb(&stack_a, &stack_b);
 		pb(&stack_a, &stack_b);

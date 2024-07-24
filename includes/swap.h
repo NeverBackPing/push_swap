@@ -23,27 +23,9 @@ typedef struct t_datatruct
 {
 	int					content;
 	int					position;
-	int					cost;
-	bool				up_med;
-	bool				blow;
-	struct t_datatruct	*rule;
 	struct t_datatruct	*next;
 	struct t_datatruct	*prev;
 }	t_data;
-//Sort
-void		init_sort(t_data **stack_a, t_data **stack_b);
-t_data		*small_value(t_data *stack);
-void		current_index(t_data *stack);
-//Sort part 2
-void		set_node_a(t_data *stack_a, t_data *stack_b);
-void		set_node_b(t_data *stack_a, t_data *stack_b);
-void		init_for_push(t_data **stack, t_data *head, char keys);
-//Sort part 3
-void		start(t_data **stack_a, t_data **stack_b);
-//Sort part 4
-t_data		*blow(t_data *stack);
-int			great_value(t_data **stack);
-void		short_values(t_data **stack_a);
 //Checker
 int			check_data(char *data);
 int			check_init(char *data, t_data **stack_a);
@@ -73,6 +55,11 @@ void		add_data(t_data **lst, t_data *new);
 void		data_clear(t_data **lst);
 void		data_delone(t_data *lst);
 t_data		*last(t_data *lst);
+//Init index
+void		bubble_sort(int *array, int size);
+void		get_position(int *value, int count, t_data *current);
+int			init_index(t_data **stack);
+void		swap(int *a, int *b);
 //Parsing
 void		error_init(t_data **lst);
 int			init_stack(char **str, t_data **stack_a);
@@ -83,6 +70,17 @@ int			check_pars(char *str, int check, t_data **stack_a);
 int			single_data(char *data);
 int			doublon(t_data **s, int c);
 int			array_data(t_data **stack_a);
+//Sort
+void		short_values(t_data **stack_a);
+t_data		*small_value(t_data *stack);
+int			init_sort(t_data **stack_a, t_data **stack_b);
+//Sort part 3
+void		five_guys(t_data **stack_a, t_data **stack_b);
+void		five_guys_part2(t_data **stack_a, t_data **stack_b, int i);
+//Sort part 4
+t_data		*blow(t_data *stack);
+int			great_value(t_data **stack);
+void		short_values(t_data **stack_a);
 //Swap
 void		clear_stack(t_data **stack_a, t_data **stack_b);
 int			stack_sort(t_data **stack_a);
