@@ -20,6 +20,7 @@ t_data	*mew_data(int content)
 	if (node == NULL)
 		return (NULL);
 	node->content = content;
+	node->position = -1;
 	node->next = NULL;
 	node->prev = NULL;
 	return (node);

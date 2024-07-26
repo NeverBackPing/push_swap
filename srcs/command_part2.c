@@ -14,37 +14,40 @@
 
 int	sb(t_data **stack_b)
 {
-	t_data	*first;
-	int		tmp;
+	t_data *first;
+	t_data *second;
 
-	tmp = 0;
 	first = *stack_b;
 	if (first == NULL || first->next == NULL)
 		return (1);
-	tmp = first->content;
-	first->content = first->next->content;
-	first->next->content = tmp;
-	ft_printf("sb\n");
+	second = first->next;
+	first->next = second->next;
+	second->prev = first->prev;
+	if (second->next != NULL)
+		second->next->prev = first;
+	second->next = first;
+	first->prev = second;
+	*stack_b = second;
+	ft_printf("sa\n");
 	return (0);
 }
 
 void	rb(t_data **stack_b)
 {
-	int		tmp;
-	int		lst;
-	t_data	*current;
+	t_data *first;
+	t_data *lst;
 
-	current = *stack_b;
-	if (current == NULL || current->next == NULL)
-		return ;
-	lst = current->content;
-	while (current->next != NULL)
-	{
-		tmp = current->next->content;
-		current->content = tmp;
-		current = current->next;
-	}
-	current->content = lst;
+	if (*stack_b == NULL || (*stack_b)->next == NULL)
+		return;
+	first = *stack_b;
+	lst = *stack_b;
+	while (lst->next != NULL)
+		lst = lst->next;
+	*stack_b = first->next;
+	(*stack_b)->prev = NULL;
+	lst->next = first;
+	first->prev = lst;
+	first->next = NULL;
 	ft_printf("rb\n");
 }
 
@@ -61,26 +64,22 @@ void	pa(t_data **stack_b, t_data **stack_a)
 
 void	rrb(t_data **stack_b)
 {
-	int		tmp;
-	int		lst;
-	t_data	*current;
-	t_data	*head;
+	t_data *last;
+	t_data *second_last;
 
-	head = *stack_b;
-	current = *stack_b;
-	if (current == NULL || current->next == NULL)
-		return ;
-	tmp = current->content;
-	head = last(head);
-	lst = head->content;
-	current->content = lst;
-	current = current->next;
-	while (current != NULL)
+	if (*stack_b == NULL || (*stack_b)->next == NULL)
+		return;
+	last = *stack_b;
+	second_last = NULL;
+	while (last->next != NULL)
 	{
-		lst = tmp;
-		tmp = current->content;
-		current->content = lst;
-		current = current->next;
+		second_last = last;
+		last = last->next;
 	}
+	second_last->next = NULL;
+	last->prev = NULL;
+	last->next = *stack_b;
+	(*stack_b)->prev = last;
+	*stack_b = last;
 	ft_printf("rrb\n");
 }

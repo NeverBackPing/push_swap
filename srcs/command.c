@@ -29,39 +29,43 @@ int	lenstruct(t_data **stack)
 	return (len);
 }
 
+
 int	sa(t_data **stack_a)
 {
-	t_data	*first;
-	int		tmp;
+	t_data *first;
+	t_data *second;
 
-	tmp = 0;
 	first = *stack_a;
 	if (first == NULL || first->next == NULL)
 		return (1);
-	tmp = first->content;
-	first->content = first->next->content;
-	first->next->content = tmp;
+	second = first->next;
+	first->next = second->next;
+	second->prev = first->prev;
+	if (second->next != NULL)
+		second->next->prev = first;
+	second->next = first;
+	first->prev = second;
+	*stack_a = second;
 	ft_printf("sa\n");
 	return (0);
 }
 
 void	ra(t_data **stack_a)
 {
-	int		tmp;
-	int		lst;
-	t_data	*current;
+	t_data *first;
+	t_data *lst;
 
-	current = *stack_a;
-	if (current == NULL || current->next == NULL)
-		return ;
-	lst = current->content;
-	while (current->next != NULL)
-	{
-		tmp = current->next->content;
-		current->content = tmp;
-		current = current->next;
-	}
-	current->content = lst;
+	if (*stack_a == NULL || (*stack_a)->next == NULL)
+		return;
+	first = *stack_a;
+	lst = *stack_a;
+	while (lst->next != NULL)
+		lst = lst->next;
+	*stack_a = first->next;
+	(*stack_a)->prev = NULL;
+	lst->next = first;
+	first->prev = lst;
+	first->next = NULL;
 	ft_printf("ra\n");
 }
 
@@ -78,26 +82,22 @@ void	pb(t_data **stack_a, t_data **stack_b)
 
 void	rra(t_data **stack_a)
 {
-	int		tmp;
-	int		lst;
-	t_data	*current;
-	t_data	*head;
+	t_data *last;
+	t_data *second_last;
 
-	head = *stack_a;
-	current = *stack_a;
-	if (current == NULL || current->next == NULL)
-		return ;
-	tmp = current->content;
-	head = last(head);
-	lst = head->content;
-	current->content = lst;
-	current = current->next;
-	while (current != NULL)
+	if (*stack_a == NULL || (*stack_a)->next == NULL)
+		return;
+	last = *stack_a;
+	second_last = NULL;
+	while (last->next != NULL)
 	{
-		lst = tmp;
-		tmp = current->content;
-		current->content = lst;
-		current = current->next;
+		second_last = last;
+		last = last->next;
 	}
-	//ft_printf("rra\n");
+	second_last->next = NULL;
+	last->prev = NULL;
+	last->next = *stack_a;
+	(*stack_a)->prev = last;
+	*stack_a = last;
+	ft_printf("rra\n");
 }

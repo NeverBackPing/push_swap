@@ -12,6 +12,19 @@
 
 #include "../includes/swap.h"
 
+void	short_values(t_data **stack_a)
+{
+	int	great;
+
+	great = great_value(stack_a);
+	if ((*stack_a)->content == great)
+		ra(stack_a);
+	else if ((*stack_a)->next->content == great)
+		rra(stack_a);
+	if ((*stack_a)->content > (*stack_a)->next->content)
+		sa(stack_a);
+}
+
 void	five_guys_part2(t_data **stack_a, t_data **stack_b, int i)
 {
 	t_data	*prev;
@@ -20,7 +33,7 @@ void	five_guys_part2(t_data **stack_a, t_data **stack_b, int i)
 
 	while (i--)
 	{
-		small = small_value(*stack_a);
+		small = small_index(*stack_a);
 		if (*stack_a == small)
 			pb(stack_a, stack_b);
 		else

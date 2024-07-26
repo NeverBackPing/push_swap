@@ -56,10 +56,7 @@ void		data_clear(t_data **lst);
 void		data_delone(t_data *lst);
 t_data		*last(t_data *lst);
 //Init index
-void		bubble_sort(int *array, int size);
-void		get_position(int *value, int count, t_data *current);
 int			init_index(t_data **stack);
-void		swap(int *a, int *b);
 //Parsing
 void		error_init(t_data **lst);
 int			init_stack(char **str, t_data **stack_a);
@@ -71,15 +68,12 @@ int			single_data(char *data);
 int			doublon(t_data **s, int c);
 int			array_data(t_data **stack_a);
 //Sort
-void		short_values(t_data **stack_a);
-t_data		*small_value(t_data *stack);
+t_data		*small_index(t_data *stack);
 int			init_sort(t_data **stack_a, t_data **stack_b);
-//Sort part 3
+int			great_value(t_data **stack);
+//Five guys
 void		five_guys(t_data **stack_a, t_data **stack_b);
 void		five_guys_part2(t_data **stack_a, t_data **stack_b, int i);
-//Sort part 4
-t_data		*blow(t_data *stack);
-int			great_value(t_data **stack);
 void		short_values(t_data **stack_a);
 //Swap
 void		clear_stack(t_data **stack_a, t_data **stack_b);
