@@ -12,6 +12,41 @@
 
 #include "../includes/swap.h"
 
+t_data	*small_index(t_data *stack)
+{
+	t_data	*small;
+	t_data	*current;
+
+	small = stack;
+	current = stack;
+	while (current != NULL)
+	{
+		if (current->position < small->position)
+			small = current;
+		current = current->next;
+	}
+	return (small);
+}
+
+int	great_value(t_data **stack)
+{
+	int		great;
+	t_data	*tmp;
+
+	great = 0;
+	tmp = *stack;
+	if (tmp)
+		great = tmp->content;
+	tmp = tmp->next;
+	while (tmp != NULL)
+	{
+		if (great < tmp->content && tmp != NULL)
+			great = tmp->content;
+		tmp = tmp->next;
+	}
+	return (great);
+}
+
 int	init_index(t_data **stack)
 {
 	int		pos;
@@ -23,7 +58,6 @@ int	init_index(t_data **stack)
 	{
 		current = *stack;
 		smallest = NULL;
-
 		while (current != NULL)
 		{
 			if (current->position == -1

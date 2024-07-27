@@ -29,11 +29,10 @@ int	lenstruct(t_data **stack)
 	return (len);
 }
 
-
 int	sa(t_data **stack_a)
 {
-	t_data *first;
-	t_data *second;
+	t_data	*first;
+	t_data	*second;
 
 	first = *stack_a;
 	if (first == NULL || first->next == NULL)
@@ -52,11 +51,11 @@ int	sa(t_data **stack_a)
 
 void	ra(t_data **stack_a)
 {
-	t_data *first;
-	t_data *lst;
+	t_data	*first;
+	t_data	*lst;
 
 	if (*stack_a == NULL || (*stack_a)->next == NULL)
-		return;
+		return ;
 	first = *stack_a;
 	lst = *stack_a;
 	while (lst->next != NULL)
@@ -82,11 +81,11 @@ void	pb(t_data **stack_a, t_data **stack_b)
 
 void	rra(t_data **stack_a)
 {
-	t_data *last;
-	t_data *second_last;
+	t_data	*last;
+	t_data	*second_last;
 
 	if (*stack_a == NULL || (*stack_a)->next == NULL)
-		return;
+		return ;
 	last = *stack_a;
 	second_last = NULL;
 	while (last->next != NULL)

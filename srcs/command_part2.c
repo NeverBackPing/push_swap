@@ -14,8 +14,8 @@
 
 int	sb(t_data **stack_b)
 {
-	t_data *first;
-	t_data *second;
+	t_data	*first;
+	t_data	*second;
 
 	first = *stack_b;
 	if (first == NULL || first->next == NULL)
@@ -34,11 +34,11 @@ int	sb(t_data **stack_b)
 
 void	rb(t_data **stack_b)
 {
-	t_data *first;
-	t_data *lst;
+	t_data	*first;
+	t_data	*lst;
 
 	if (*stack_b == NULL || (*stack_b)->next == NULL)
-		return;
+		return ;
 	first = *stack_b;
 	lst = *stack_b;
 	while (lst->next != NULL)
@@ -64,11 +64,11 @@ void	pa(t_data **stack_b, t_data **stack_a)
 
 void	rrb(t_data **stack_b)
 {
-	t_data *last;
-	t_data *second_last;
+	t_data	*last;
+	t_data	*second_last;
 
 	if (*stack_b == NULL || (*stack_b)->next == NULL)
-		return;
+		return ;
 	last = *stack_b;
 	second_last = NULL;
 	while (last->next != NULL)

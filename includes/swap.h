@@ -68,6 +68,7 @@ int			single_data(char *data);
 int			doublon(t_data **s, int c);
 int			array_data(t_data **stack_a);
 //Sort
+int			stack_size(t_data *stack);
 t_data		*small_index(t_data *stack);
 int			init_sort(t_data **stack_a, t_data **stack_b);
 int			great_value(t_data **stack);
