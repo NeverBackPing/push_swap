@@ -67,7 +67,10 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc == 1)
+	{
 		write(2, "Error\n", 6);
+		return (2);
+	}
 	else
 	{
 		if (init_stack(argv, &stack_a))
@@ -75,7 +78,11 @@ int	main(int argc, char **argv)
 		if (stack_sort(&stack_a))
 			return (clear_stack(&stack_a, &stack_b), 0);
 		if (init_sort(&stack_a, &stack_b))
-			return (clear_stack(&stack_a, &stack_b), 0);
+		{
+			clear_stack(&stack_a, &stack_b);
+			write(2, "Error\n", 6);
+			return (2);
+		}
 		clear_stack(&stack_a, &stack_b);
 	}
 	return (0);

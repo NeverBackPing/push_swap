@@ -58,6 +58,8 @@ int	check_format(char *str, int content, t_data **stack)
 		return (check = -1, check);
 	content = ft_atol(str);
 	data_a = mew_data(content);
+	if (data_a == NULL)
+		return (check = -1, check);
 	add_data(stack, data_a);
 	return (check);
 }
