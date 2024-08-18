@@ -42,7 +42,7 @@ PRINTF_OBJS = $(PRINTF_SRC:.c=.o)
 NAME = push_swap
 
 SRC = srcs/data_link.c srcs/parsing.c srcs/swap.c srcs/check.c srcs/single_data.c srcs/command.c\
-	 srcs/command_utile.c srcs/command_part2.c srcs/sort.c srcs/init_index.c srcs/five_guys.c
+	 srcs/command_utile.c srcs/command_part2.c srcs/sort.c srcs/init_index.c
 
 SRCS = ${SRC} ${LIBC} ${PRINTF_SRC}
 

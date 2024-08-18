@@ -12,6 +12,19 @@
 
 #include "../includes/swap.h"
 
+void	short_values(t_data **stack_a)
+{
+	int	great;
+
+	great = great_value(stack_a);
+	if ((*stack_a)->content == great)
+		ra(stack_a);
+	else if ((*stack_a)->next->content == great)
+		rra(stack_a);
+	if ((*stack_a)->content > (*stack_a)->next->content)
+		sa(stack_a);
+}
+
 bool	is_sorted(t_data *stack_a, int i, const int max)
 {
 	if (i > max)
@@ -86,8 +99,6 @@ int	init_sort(t_data **stack_a, t_data **stack_b)
 		sa(stack_a);
 	else if (len_stack == 3)
 		short_values(stack_a);
-	else if (len_stack <= 5)
-		five_guys(stack_a, stack_b);
 	else
 		start(stack_a, stack_b);
 	if (!(stack_sort(stack_a)))
