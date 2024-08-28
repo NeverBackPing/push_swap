@@ -99,6 +99,8 @@ int	init_sort(t_data **stack_a, t_data **stack_b)
 		sa(stack_a);
 	else if (len_stack == 3)
 		short_values(stack_a);
+	else if (len_stack <= 5)
+		five_guys(stack_a, stack_b);
 	else
 		start(stack_a, stack_b);
 	if (!(stack_sort(stack_a)))

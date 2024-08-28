@@ -72,6 +72,7 @@ int			stack_size(t_data *stack);
 t_data		*small_index(t_data *stack);
 int			init_sort(t_data **stack_a, t_data **stack_b);
 int			great_value(t_data **stack);
+void	start(t_data **stack_a, t_data **stack_b);
 //Five guys
 void		five_guys(t_data **stack_a, t_data **stack_b);
 void		five_guys_part2(t_data **stack_a, t_data **stack_b, int i);
