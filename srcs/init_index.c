@@ -47,6 +47,25 @@ int	great_value(t_data **stack)
 	return (great);
 }
 
+int	small_value(t_data **stack)
+{
+	int		small;
+	t_data	*tmp;
+
+	small = 0;
+	tmp = *stack;
+	if (tmp)
+		small = tmp->content;
+	tmp = tmp->next;
+	while (tmp != NULL)
+	{
+		if (small > tmp->content && tmp != NULL)
+			small = tmp->content;
+		tmp = tmp->next;
+	}
+	return (small);
+}
+
 int	init_index(t_data **stack)
 {
 	int		pos;

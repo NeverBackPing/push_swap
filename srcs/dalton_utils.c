@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   five_guys.c                                        :+:      :+:    :+:   */
+/*   dalton_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sjossain <sjossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,31 +12,40 @@
 
 #include "../includes/swap.h"
 
-void	five_guys(t_data **stack_a, t_data **stack_b)
+int	insert_smallest(t_data **stack_a, t_data **stack_b, int small)
 {
-	int	len;
-	int	tmp;
-	int	great;
-	int	small;
-
-	len = lenstruct(stack_a);
-	while (len-- > 3)
-		pb(stack_a, stack_b);
-	short_values(stack_a);
-	great = great_value(stack_a);
+	pa(stack_b, stack_a);
 	small = small_value(stack_a);
-	while (*stack_b)
-	{
-		tmp = (*stack_b)->content;
-		if (tmp < small)
-			small = insert_smallest(stack_a, stack_b, small);
-		else if (tmp > great)
-			great = insert_greatest(stack_a, stack_b, great);
-		else if (tmp < (*stack_a)->next->content)
-			william(stack_a, stack_b);
-		else if ((tmp < (*stack_a)->next->next->content) && tmp < great)
-			insert_middle(stack_a, stack_b);
-		else if (tmp < great && (tmp > (*stack_a)->next->next->content))
-			insert_before_greatest(stack_a, stack_b);
-	}
+	return (small);
+}
+
+void	insert_middle(t_data **stack_a, t_data **stack_b)
+{
+	ra(stack_a);
+	pa(stack_b, stack_a);
+	sa(stack_a);
+	rra(stack_a);
+}
+
+void	insert_before_greatest(t_data **stack_a, t_data **stack_b)
+{
+	rra(stack_a);
+	pa(stack_b, stack_a);
+	ra(stack_a);
+	ra(stack_a);
+}
+
+int	insert_greatest(t_data **stack_a, t_data **stack_b, int great)
+{
+	pa(stack_b, stack_a);
+	ra(stack_a);
+	great = great_value(stack_a);
+	return (great);
+}
+
+void	william(t_data **stack_a, t_data **stack_b)
+{
+	ra(stack_a);
+	pa(stack_b, stack_a);
+	rra(stack_a);
 }

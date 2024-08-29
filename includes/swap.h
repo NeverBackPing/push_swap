@@ -56,6 +56,7 @@ void		data_clear(t_data **lst);
 void		data_delone(t_data *lst);
 t_data		*last(t_data *lst);
 //Init index
+int			small_value(t_data **stack);
 int			init_index(t_data **stack);
 //Parsing
 void		error_init(t_data **lst);
@@ -72,7 +73,7 @@ int			stack_size(t_data *stack);
 t_data		*small_index(t_data *stack);
 int			init_sort(t_data **stack_a, t_data **stack_b);
 int			great_value(t_data **stack);
-void	start(t_data **stack_a, t_data **stack_b);
+void		start(t_data **stack_a, t_data **stack_b);
 //Five guys
 void		five_guys(t_data **stack_a, t_data **stack_b);
 void		five_guys_part2(t_data **stack_a, t_data **stack_b, int i);
@@ -80,4 +81,10 @@ void		short_values(t_data **stack_a);
 //Swap
 void		clear_stack(t_data **stack_a, t_data **stack_b);
 int			stack_sort(t_data **stack_a);
+////////////////
+int			insert_greatest(t_data **stack_a, t_data **stack_b, int great);
+int			insert_smallest(t_data **stack_a, t_data **stack_b, int small);
+void		insert_middle(t_data **stack_a, t_data **stack_b);
+void		william(t_data **stack_a, t_data **stack_b);
+void		insert_before_greatest(t_data **stack_a, t_data **stack_b);
 #endif
